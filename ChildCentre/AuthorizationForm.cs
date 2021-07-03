@@ -10,38 +10,67 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using ChildCentre.Utility.DB;
-
+using ChildCentre.Utility;
 namespace ChildCentre
 {
-    public partial class Form1 : Form
+    public partial class AuthorizationForm : Form
     {
-        public Form1()
+        public AuthorizationForm()
         {
             InitializeComponent();
-
-            MessageBox.Show(Properties.Settings.Default.id.ToString());
+            if (Properties.Settings.Default.id != -1)
+            {
+                OpenMainApp();
+            }
         }
 
-        private async void button1_ClickAsync(object sender, EventArgs e)
+        private void LoginButton_Click(object sender, EventArgs e)
         {
-            bool res = false ;
+            string login = LoginTextBox.Text;
+            string password = PasswordTextBox.Text;
+            bool res = false;
             try
             {
-                res = DBClient.Login("student", "student");
+                res = DBClient.Login(login, password);
             }
-            catch (WrongPasswordException ex)
+            catch (WrongPasswordException)
             {
 
                 MessageBox.Show("Неверный пароль!");
             }
-            catch (UserNotFoundException ex)
+            catch (UserNotFoundException)
             {
                 MessageBox.Show("Такого пользователя не существует!");
             }
 
             if (res)
             {
-                MessageBox.Show("Вход в систему!" );
+                OpenMainApp();
+            }
+        }
+
+        private void OpenMainApp() {
+            if (Properties.Settings.Default.role == (int)Role.ADMIN)
+            {
+                Visible = false;
+                var AdminForm = new AdminForm();
+                AdminForm.Closed += (s, args) => Close();
+                AdminForm.Show();
+            }
+            else
+            {
+                Visible = false;
+                var UserForm = new UserForm();
+                UserForm.Closed += (s, args) => Close();
+                UserForm.Show();
+            }
+        }
+
+        private void AuthorizationForm_Shown(object sender, EventArgs e)
+        {
+            if (Properties.Settings.Default.id != -1)
+            {
+                Hide();
             }
         }
     }

@@ -19,19 +19,29 @@ namespace ChildCentre.Utility.DB
             ";database=" + "UlFaq3Ih7N" +
             ";port=" + "3306" +
             ";password=" + "XcBiM1R2Ay" + ";";
+
         private static MySqlConnection Connect() 
         {
             MySqlConnection connection = new MySqlConnection();
             connection.ConnectionString = connStr;
-           
             connection.Open();
             return connection;
         }
        
         public static bool Login(string login, string password)
         {
+            login = login.Trim();
+            password = password.Trim();
+            if (login.Length == 0)
+            {
+                return false;
+            }
+            if (password.Length == 0)
+            {
+                return false;
+            }
             var connection = Connect();
-            string sql = "SELECT ID, PASSWORD, ROLE_ID FROM ACCOUNT WHERE LOGIN = @login";
+            string sql = "SELECT ID, PASSWORD, ROLE_ID FROM ACCOUNT WHERE BINARY LOGIN = @login";
             MySqlCommand cmd = new MySqlCommand(sql, connection);
 
             cmd.Parameters.AddWithValue("login", login);
@@ -62,6 +72,17 @@ namespace ChildCentre.Utility.DB
                 throw new WrongPasswordException();
             }
             return true;
+        }
+
+        public static List<AccountModel> GetAccounts(int role)
+        {
+            var connection = Connect();
+            string sql = "SELECT ID, FULLNAME, PHONENUMBER, EMAIL FROM ACCOUNT WHERE ROLE_ID = @role";
+            MySqlCommand cmd = new MySqlCommand(sql, connection);
+
+
+            connection.Close();
+            throw new NotImplementedException();
         }
     }
 }
