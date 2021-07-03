@@ -51,13 +51,11 @@ namespace ChildCentre
         private void TeachersButton_Click(object sender, EventArgs e)
         {
             SetActivePanel(TeacherPanel);
-
         }
 
         private void ScheduleButton_Click(object sender, EventArgs e)
         {
             SetActivePanel(SchedulePanel);
-
         }
 
         private void SetActivePanel(UserControl panel)
@@ -91,7 +89,6 @@ namespace ChildCentre
         private void AddUserButton_Click(object sender, EventArgs e)
         {
             SetActivePanel(AddUserPanel);
-
         }
 
         private void ExitButton_Click(object sender, EventArgs e)
@@ -101,7 +98,6 @@ namespace ChildCentre
             Properties.Settings.Default.Save();
             Hide();
             Application.OpenForms["AuthorizationForm"].Show();
-
         }
     }
 }

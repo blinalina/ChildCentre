@@ -40,14 +40,25 @@ namespace ChildCentre.Utility.DB
             {
                 return false;
             }
+
+            //создаем соединение
             var connection = Connect();
+
+            //создаем строку запроса, и можно указать параметры через @
             string sql = "SELECT ID, PASSWORD, ROLE_ID FROM ACCOUNT WHERE BINARY LOGIN = @login";
+            
+            //создание команды
             MySqlCommand cmd = new MySqlCommand(sql, connection);
 
+            //добавляем параметры 
             cmd.Parameters.AddWithValue("login", login);
+
             string passwordFromDB = "";
             int idFromDB = -1;
 
+            // cmd.ExecuteReader для запроса с несколькими строками с толбцами
+            //cmd.ExecuteNonQuery для insert, delete, update
+            //cmd.ExecuteScalar одно значение
             using (var res = cmd.ExecuteReader())
             {
                 while (res.Read())
@@ -55,6 +66,7 @@ namespace ChildCentre.Utility.DB
                     idFromDB = res.GetInt32(0);
                     passwordFromDB = res.GetString(1);
                     int role = res.GetInt32(2);
+
 
                     Properties.Settings.Default.id = idFromDB;
                     Properties.Settings.Default.role = role;

@@ -15,6 +15,8 @@ namespace ChildCentre
         public UserForm()
         {
             InitializeComponent();
+          /*  Properties.Settings.Default.id = -1;
+            Properties.Settings.Default.Save();*/
         }
     }
 }
