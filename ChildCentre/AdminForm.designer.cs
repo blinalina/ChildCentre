@@ -42,9 +42,10 @@ namespace ChildCentre
             this.ScheduleButton.BackColor = System.Drawing.Color.PaleGoldenrod;
             this.ScheduleButton.FlatAppearance.BorderSize = 0;
             this.ScheduleButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ScheduleButton.Location = new System.Drawing.Point(12, 12);
+            this.ScheduleButton.Location = new System.Drawing.Point(11, 10);
+            this.ScheduleButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ScheduleButton.Name = "ScheduleButton";
-            this.ScheduleButton.Size = new System.Drawing.Size(123, 75);
+            this.ScheduleButton.Size = new System.Drawing.Size(109, 60);
             this.ScheduleButton.TabIndex = 0;
             this.ScheduleButton.Text = "Расписание";
             this.ScheduleButton.UseVisualStyleBackColor = false;
@@ -55,9 +56,10 @@ namespace ChildCentre
             this.StudentsButton.BackColor = System.Drawing.Color.PaleGoldenrod;
             this.StudentsButton.FlatAppearance.BorderSize = 0;
             this.StudentsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.StudentsButton.Location = new System.Drawing.Point(12, 93);
+            this.StudentsButton.Location = new System.Drawing.Point(11, 74);
+            this.StudentsButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.StudentsButton.Name = "StudentsButton";
-            this.StudentsButton.Size = new System.Drawing.Size(123, 75);
+            this.StudentsButton.Size = new System.Drawing.Size(109, 60);
             this.StudentsButton.TabIndex = 1;
             this.StudentsButton.Text = "Ученики";
             this.StudentsButton.UseVisualStyleBackColor = false;
@@ -68,9 +70,10 @@ namespace ChildCentre
             this.TeachersButton.BackColor = System.Drawing.Color.PaleGoldenrod;
             this.TeachersButton.FlatAppearance.BorderSize = 0;
             this.TeachersButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.TeachersButton.Location = new System.Drawing.Point(12, 174);
+            this.TeachersButton.Location = new System.Drawing.Point(11, 139);
+            this.TeachersButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.TeachersButton.Name = "TeachersButton";
-            this.TeachersButton.Size = new System.Drawing.Size(123, 75);
+            this.TeachersButton.Size = new System.Drawing.Size(109, 60);
             this.TeachersButton.TabIndex = 2;
             this.TeachersButton.Text = "Учителя";
             this.TeachersButton.UseVisualStyleBackColor = false;
@@ -82,9 +85,10 @@ namespace ChildCentre
             this.ExitButton.BackColor = System.Drawing.Color.PaleGoldenrod;
             this.ExitButton.FlatAppearance.BorderSize = 0;
             this.ExitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ExitButton.Location = new System.Drawing.Point(12, 430);
+            this.ExitButton.Location = new System.Drawing.Point(11, 344);
+            this.ExitButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ExitButton.Name = "ExitButton";
-            this.ExitButton.Size = new System.Drawing.Size(123, 75);
+            this.ExitButton.Size = new System.Drawing.Size(109, 60);
             this.ExitButton.TabIndex = 4;
             this.ExitButton.Text = "Выход";
             this.ExitButton.UseVisualStyleBackColor = false;
@@ -95,9 +99,10 @@ namespace ChildCentre
             this.AddUserButton.BackColor = System.Drawing.Color.PaleGoldenrod;
             this.AddUserButton.FlatAppearance.BorderSize = 0;
             this.AddUserButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.AddUserButton.Location = new System.Drawing.Point(12, 255);
+            this.AddUserButton.Location = new System.Drawing.Point(11, 204);
+            this.AddUserButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.AddUserButton.Name = "AddUserButton";
-            this.AddUserButton.Size = new System.Drawing.Size(123, 75);
+            this.AddUserButton.Size = new System.Drawing.Size(109, 60);
             this.AddUserButton.TabIndex = 19;
             this.AddUserButton.Text = "Создать аккаунт";
             this.AddUserButton.UseVisualStyleBackColor = false;
@@ -105,23 +110,25 @@ namespace ChildCentre
             // 
             // ContentPanel
             // 
-            this.ContentPanel.Location = new System.Drawing.Point(151, 12);
+            this.ContentPanel.Location = new System.Drawing.Point(134, 10);
+            this.ContentPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ContentPanel.Name = "ContentPanel";
-            this.ContentPanel.Size = new System.Drawing.Size(631, 493);
+            this.ContentPanel.Size = new System.Drawing.Size(561, 394);
             this.ContentPanel.TabIndex = 20;
             // 
             // AdminForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.ClientSize = new System.Drawing.Size(794, 517);
+            this.ClientSize = new System.Drawing.Size(706, 414);
             this.Controls.Add(this.ContentPanel);
             this.Controls.Add(this.AddUserButton);
             this.Controls.Add(this.ExitButton);
             this.Controls.Add(this.TeachersButton);
             this.Controls.Add(this.StudentsButton);
             this.Controls.Add(this.ScheduleButton);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "AdminForm";
             this.Text = "Детский центр";
             this.ResumeLayout(false);
