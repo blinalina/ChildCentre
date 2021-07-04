@@ -124,5 +124,109 @@ namespace ChildCentre.Utility.DB
             connection.Close();
             return schedule;
         }
+
+
+
+        public static bool ControlAddUserToDb(string login, string password, string role, string fullname, string birth, string number, string email)
+        {
+            login = login.Trim();
+            password = password.Trim();
+            role = role.Trim();
+            fullname = fullname.Trim();
+            birth = birth.Trim();
+            number = number.Trim();
+            email = email.Trim();
+            if (login.Length == 0)
+            {
+                return false;
+            }
+            if (password.Length == 0)
+            {
+                return false;
+            }
+            if (role.Length == 0)
+            {
+                return false;
+            }
+            if (fullname.Length == 0)
+            {
+                return false;
+            }
+            if (birth.Length == 0)
+            {
+                return false;
+            }
+            if (number.Length == 0)
+            {
+                return false;
+            }
+            if (email.Length == 0)
+            {
+                return false;
+            }
+
+            var connection = Connect();
+            string sql = "SELECT LOGIN, PASSWORD FROM ACCOUNT WHERE LOGIN = @login AND PASSWORD = @password ";
+            MySqlCommand cmd = new MySqlCommand(sql, connection);
+            cmd.Parameters.AddWithValue("login", login);
+            cmd.Parameters.AddWithValue("password", password);
+
+            string passwordFromDB = "";
+            string loginFromDB = "";
+
+            using (var res = cmd.ExecuteReader())
+            {
+                while (res.Read())
+                {
+                    loginFromDB = res.GetString(0);
+                    passwordFromDB = res.GetString(1);
+
+                }
+            }
+            connection.Close();
+            if (login == loginFromDB && password == passwordFromDB)
+            {
+                throw new UserNotFoundException();
+            }
+            return true;
+            
+        }
+        public static bool AddUserToDb(string login, string password, string role, string fullname, string birth, string number, string email)
+        {
+            login = login.Trim();
+            password = password.Trim();
+            role = role.Trim();
+            fullname = fullname.Trim();
+            birth = birth.Trim();
+            number = number.Trim();
+            email = email.Trim();
+            int OK;
+
+            var connection = Connect();
+
+            string sql1 = "INSERT INTO `ACCOUNT` (`LOGIN`, `PASSWORD`, `ROLE_ID`, `FULL_NAME`, `DATE_OF_BIRTH`, `PHONE_NUMBER`, `EMAIL`) VALUES (@login, @password, @role, @fullname, @birth, @number, @email);";
+            MySqlCommand cmd1 = new MySqlCommand(sql1, connection);
+            cmd1.Parameters.AddWithValue("login", login);
+            cmd1.Parameters.AddWithValue("password", password);
+            cmd1.Parameters.AddWithValue("role", role);
+            cmd1.Parameters.AddWithValue("fullname", fullname);
+            cmd1.Parameters.AddWithValue("birth",birth);
+            cmd1.Parameters.AddWithValue("number", number);
+            cmd1.Parameters.AddWithValue("email", email);
+            if (cmd1.ExecuteNonQuery() != 1)
+                OK = -1;
+            else
+                OK = 1;
+
+            connection.Close();
+
+            if (OK == -1)
+            {
+                throw new UserNotFoundException();
+            }
+            
+             return true;
+            
+        }
     }
 }
