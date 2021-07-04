@@ -8,6 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ChildCentre.AdminPanels;
+using ChildCentre.Utility;
+using ChildCentre.Utility.DB;
+
 namespace ChildCentre
 {
     public partial class AdminForm : Form
@@ -44,7 +47,6 @@ namespace ChildCentre
 
         private void StudentsButton_Click(object sender, EventArgs e)
         {
-            //new StudentsPanel(new List<string>() {"Имя1", "Имя2" }).Show();
             SetActivePanel(StudentsPanel);
         }
 
@@ -64,16 +66,28 @@ namespace ChildCentre
             {
                 StudentsPanel.Visible = true;
                 TeacherPanel.Visible = SchedulePanel.Visible = AddUserPanel.Visible = false;
+               
+                var res = DBClient.GetAccounts((int)Role.STUDENT);
+                StudentsPanel.UpdateListOfUser(res);
+                Console.WriteLine(res.Count);
             }
             else if (panel == TeacherPanel)
             {
                 TeacherPanel.Visible = true;
                 StudentsPanel.Visible = SchedulePanel.Visible = AddUserPanel.Visible = false;
+
+                var res = DBClient.GetAccounts((int)Role.TEACHER);
+                TeacherPanel.UpdateListOfUser(res);
+                Console.WriteLine(res.Count);
             }
             else if (panel == SchedulePanel)
             {
                 SchedulePanel.Visible = true;
                 TeacherPanel.Visible = StudentsPanel.Visible = AddUserPanel.Visible = false;
+
+                var res = DBClient.GetCourses();
+                SchedulePanel.UpdateListOfCourses(res);
+                Console.WriteLine(res.Count);
             }
             else if (panel == AddUserPanel)
             {

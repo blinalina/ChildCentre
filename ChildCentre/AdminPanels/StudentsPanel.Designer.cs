@@ -33,11 +33,9 @@ namespace ChildCentre.AdminPanels
             this.label12 = new System.Windows.Forms.Label();
             this.SignUpStudentButton = new System.Windows.Forms.Button();
             this.EditAccountButton = new System.Windows.Forms.Button();
-            this.label11 = new System.Windows.Forms.Label();
             this.EmailLabel = new System.Windows.Forms.Label();
             this.PhoneNumberLabel = new System.Windows.Forms.Label();
             this.DateOfBirthLabel = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -51,16 +49,16 @@ namespace ChildCentre.AdminPanels
             // LoginLabel
             // 
             this.LoginLabel.AutoSize = true;
-            this.LoginLabel.Location = new System.Drawing.Point(410, 200);
+            this.LoginLabel.Location = new System.Drawing.Point(410, 220);
             this.LoginLabel.Name = "LoginLabel";
-            this.LoginLabel.Size = new System.Drawing.Size(52, 20);
+            this.LoginLabel.Size = new System.Drawing.Size(99, 20);
             this.LoginLabel.TabIndex = 31;
-            this.LoginLabel.Text = "lau.18";
+            this.LoginLabel.Text = "Нет данных";
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(108, 200);
+            this.label12.Location = new System.Drawing.Point(108, 220);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(59, 20);
             this.label12.TabIndex = 30;
@@ -90,54 +88,37 @@ namespace ChildCentre.AdminPanels
             this.EditAccountButton.Text = "Редактировать аккаунт";
             this.EditAccountButton.UseVisualStyleBackColor = false;
             // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(410, 343);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(0, 20);
-            this.label11.TabIndex = 27;
-            // 
             // EmailLabel
             // 
             this.EmailLabel.AutoSize = true;
-            this.EmailLabel.Location = new System.Drawing.Point(410, 305);
+            this.EmailLabel.Location = new System.Drawing.Point(410, 325);
             this.EmailLabel.Name = "EmailLabel";
-            this.EmailLabel.Size = new System.Drawing.Size(102, 20);
+            this.EmailLabel.Size = new System.Drawing.Size(99, 20);
             this.EmailLabel.TabIndex = 26;
-            this.EmailLabel.Text = "lau.15@ya.ru";
+            this.EmailLabel.Text = "Нет данных";
             // 
             // PhoneNumberLabel
             // 
             this.PhoneNumberLabel.AutoSize = true;
-            this.PhoneNumberLabel.Location = new System.Drawing.Point(410, 267);
+            this.PhoneNumberLabel.Location = new System.Drawing.Point(410, 287);
             this.PhoneNumberLabel.Name = "PhoneNumberLabel";
-            this.PhoneNumberLabel.Size = new System.Drawing.Size(108, 20);
+            this.PhoneNumberLabel.Size = new System.Drawing.Size(99, 20);
             this.PhoneNumberLabel.TabIndex = 25;
-            this.PhoneNumberLabel.Text = "88005553535";
+            this.PhoneNumberLabel.Text = "Нет данных";
             // 
             // DateOfBirthLabel
             // 
             this.DateOfBirthLabel.AutoSize = true;
-            this.DateOfBirthLabel.Location = new System.Drawing.Point(410, 233);
+            this.DateOfBirthLabel.Location = new System.Drawing.Point(410, 253);
             this.DateOfBirthLabel.Name = "DateOfBirthLabel";
-            this.DateOfBirthLabel.Size = new System.Drawing.Size(89, 20);
+            this.DateOfBirthLabel.Size = new System.Drawing.Size(99, 20);
             this.DateOfBirthLabel.TabIndex = 24;
-            this.DateOfBirthLabel.Text = "15.05.2004";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(108, 343);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(223, 20);
-            this.label7.TabIndex = 23;
-            this.label7.Text = "Дополнительные сведения:";
+            this.DateOfBirthLabel.Text = "Нет данных";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(108, 305);
+            this.label6.Location = new System.Drawing.Point(108, 325);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(164, 20);
             this.label6.TabIndex = 22;
@@ -146,7 +127,7 @@ namespace ChildCentre.AdminPanels
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(108, 267);
+            this.label5.Location = new System.Drawing.Point(108, 287);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(156, 20);
             this.label5.TabIndex = 21;
@@ -155,7 +136,7 @@ namespace ChildCentre.AdminPanels
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(108, 233);
+            this.label4.Location = new System.Drawing.Point(108, 253);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(132, 20);
             this.label4.TabIndex = 20;
@@ -165,11 +146,11 @@ namespace ChildCentre.AdminPanels
             // 
             this.FullNameLabel.AutoSize = true;
             this.FullNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.FullNameLabel.Location = new System.Drawing.Point(150, 149);
+            this.FullNameLabel.Location = new System.Drawing.Point(150, 169);
             this.FullNameLabel.Name = "FullNameLabel";
-            this.FullNameLabel.Size = new System.Drawing.Size(323, 29);
+            this.FullNameLabel.Size = new System.Drawing.Size(147, 29);
             this.FullNameLabel.TabIndex = 19;
-            this.FullNameLabel.Text = "Ленский Алексей Юрьевич";
+            this.FullNameLabel.Text = "Нет данных";
             // 
             // StudentsComboBox
             // 
@@ -182,6 +163,7 @@ namespace ChildCentre.AdminPanels
             this.StudentsComboBox.Name = "StudentsComboBox";
             this.StudentsComboBox.Size = new System.Drawing.Size(374, 28);
             this.StudentsComboBox.TabIndex = 18;
+            this.StudentsComboBox.SelectedIndexChanged += new System.EventHandler(this.StudentsComboBox_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -224,11 +206,9 @@ namespace ChildCentre.AdminPanels
             this.Controls.Add(this.label12);
             this.Controls.Add(this.SignUpStudentButton);
             this.Controls.Add(this.EditAccountButton);
-            this.Controls.Add(this.label11);
             this.Controls.Add(this.EmailLabel);
             this.Controls.Add(this.PhoneNumberLabel);
             this.Controls.Add(this.DateOfBirthLabel);
-            this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -249,11 +229,9 @@ namespace ChildCentre.AdminPanels
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Button SignUpStudentButton;
         private System.Windows.Forms.Button EditAccountButton;
-        private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label EmailLabel;
         private System.Windows.Forms.Label PhoneNumberLabel;
         private System.Windows.Forms.Label DateOfBirthLabel;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
