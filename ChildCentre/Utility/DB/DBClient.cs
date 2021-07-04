@@ -18,7 +18,7 @@ namespace ChildCentre.Utility.DB
             ";user=" + "UlFaq3Ih7N" +
             ";database=" + "UlFaq3Ih7N" +
             ";port=" + "3306" +
-            ";password=" + "XcBiM1R2Ay" + ";";
+            ";password=" + "XcBiM1R2Ay" + ";convert zero datetime = True;";
 
         private static MySqlConnection Connect() 
         {
@@ -89,12 +89,40 @@ namespace ChildCentre.Utility.DB
         public static List<AccountModel> GetAccounts(int role)
         {
             var connection = Connect();
-            string sql = "SELECT ID, FULLNAME, PHONENUMBER, EMAIL FROM ACCOUNT WHERE ROLE_ID = @role";
+            string sql = "SELECT ID, LOGIN, FULL_NAME, PHONE_NUMBER, EMAIL, DATE_OF_BIRTH FROM ACCOUNT WHERE ROLE_ID = @role";
+            MySqlCommand cmd = new MySqlCommand(sql, connection);
+            cmd.Parameters.AddWithValue("role", role);
+
+            List<AccountModel> list = new List<AccountModel>();
+            using (var res = cmd.ExecuteReader())
+            {
+                while (res.Read())
+                {
+                    AccountModel user = new AccountModel(res.GetInt32(0), res.GetString(1), res.GetString(2), res.GetString(3), res.GetString(4), res.GetDateTime(5));
+                    list.Add(user);
+                }
+            }
+            connection.Close();
+            return list;
+        }
+
+        public static List<ScheduleModel> GetCourses()
+        {
+            var connection = Connect();
+            string sql = "SELECT ID, ID_COURS, (SELECT NAME FROM COURSES C WHERE C.ID = ID_COURS), ID_TEACHER, DAY_OF_THE_WEEK, START_TIME, END_TIME, CLASS FROM SCHEDULE";
             MySqlCommand cmd = new MySqlCommand(sql, connection);
 
-
+            List<ScheduleModel> schedule = new List<ScheduleModel>();
+            using (var res = cmd.ExecuteReader())
+            {
+                while (res.Read())
+                {
+                    ScheduleModel entry = new ScheduleModel(res.GetInt32(0), res.GetInt32(1), res.GetString(2), res.GetInt32(3), res.GetString(4), res.GetDateTime(5), res.GetDateTime(6), res.GetString(7));
+                    schedule.Add(entry);
+                }
+            }
             connection.Close();
-            throw new NotImplementedException();
+            return schedule;
         }
     }
 }

@@ -81,6 +81,7 @@
     <Compile Include="AdminForm.designer.cs">
       <DependentUpon>AdminForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ScheduleModel.cs" />
     <Compile Include="UserForm.cs">
       <SubType>Form</SubType>
     </Compile>

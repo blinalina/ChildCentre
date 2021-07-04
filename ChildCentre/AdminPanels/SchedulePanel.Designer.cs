@@ -29,7 +29,7 @@ namespace ChildCentre.AdminPanels
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.ScheduleDataGridView = new System.Windows.Forms.DataGridView();
             this.Учитель = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ПН = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ВТ = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -37,20 +37,20 @@ namespace ChildCentre.AdminPanels
             this.ЧТ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ПТ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.СБ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.CoursesComboBox = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ScheduleDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // ScheduleDataGridView
             // 
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.ScheduleDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ScheduleDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.ScheduleDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ScheduleDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Учитель,
             this.ПН,
             this.ВТ,
@@ -58,12 +58,12 @@ namespace ChildCentre.AdminPanels
             this.ЧТ,
             this.ПТ,
             this.СБ});
-            this.dataGridView1.Location = new System.Drawing.Point(3, 120);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 62;
-            this.dataGridView1.RowTemplate.Height = 28;
-            this.dataGridView1.Size = new System.Drawing.Size(625, 361);
-            this.dataGridView1.TabIndex = 7;
+            this.ScheduleDataGridView.Location = new System.Drawing.Point(3, 120);
+            this.ScheduleDataGridView.Name = "ScheduleDataGridView";
+            this.ScheduleDataGridView.RowHeadersWidth = 62;
+            this.ScheduleDataGridView.RowTemplate.Height = 28;
+            this.ScheduleDataGridView.Size = new System.Drawing.Size(625, 361);
+            this.ScheduleDataGridView.TabIndex = 7;
             // 
             // Учитель
             // 
@@ -119,18 +119,13 @@ namespace ChildCentre.AdminPanels
             this.СБ.Name = "СБ";
             this.СБ.ReadOnly = true;
             // 
-            // comboBox1
+            // CoursesComboBox
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "Баскетбол",
-            "Вокал",
-            "Коклюшки",
-            "Хор"});
-            this.comboBox1.Location = new System.Drawing.Point(330, 69);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(210, 28);
-            this.comboBox1.TabIndex = 6;
+            this.CoursesComboBox.FormattingEnabled = true;
+            this.CoursesComboBox.Location = new System.Drawing.Point(330, 69);
+            this.CoursesComboBox.Name = "CoursesComboBox";
+            this.CoursesComboBox.Size = new System.Drawing.Size(210, 28);
+            this.CoursesComboBox.TabIndex = 6;
             // 
             // label2
             // 
@@ -156,13 +151,13 @@ namespace ChildCentre.AdminPanels
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.ScheduleDataGridView);
+            this.Controls.Add(this.CoursesComboBox);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "SchedulePanel";
             this.Size = new System.Drawing.Size(631, 493);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ScheduleDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -170,7 +165,7 @@ namespace ChildCentre.AdminPanels
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView ScheduleDataGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn Учитель;
         private System.Windows.Forms.DataGridViewTextBoxColumn ПН;
         private System.Windows.Forms.DataGridViewTextBoxColumn ВТ;
@@ -178,7 +173,7 @@ namespace ChildCentre.AdminPanels
         private System.Windows.Forms.DataGridViewTextBoxColumn ЧТ;
         private System.Windows.Forms.DataGridViewTextBoxColumn ПТ;
         private System.Windows.Forms.DataGridViewTextBoxColumn СБ;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox CoursesComboBox;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
     }
