@@ -63,27 +63,29 @@ namespace ChildCentre.AdminPanels
             // CancelAddButton
             // 
             this.CancelAddButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.CancelAddButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.CancelAddButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CancelAddButton.Location = new System.Drawing.Point(369, 336);
+            this.CancelAddButton.Location = new System.Drawing.Point(354, 336);
             this.CancelAddButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CancelAddButton.Name = "CancelAddButton";
-            this.CancelAddButton.Size = new System.Drawing.Size(83, 31);
+            this.CancelAddButton.Size = new System.Drawing.Size(90, 42);
             this.CancelAddButton.TabIndex = 36;
             this.CancelAddButton.Text = "Отмена";
-            this.CancelAddButton.UseVisualStyleBackColor = true;
+            this.CancelAddButton.UseVisualStyleBackColor = false;
             this.CancelAddButton.Click += new System.EventHandler(this.CancelAddButton_Click);
             // 
             // AddUserToDbButton
             // 
             this.AddUserToDbButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.AddUserToDbButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.AddUserToDbButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.AddUserToDbButton.Location = new System.Drawing.Point(457, 336);
+            this.AddUserToDbButton.Location = new System.Drawing.Point(450, 336);
             this.AddUserToDbButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.AddUserToDbButton.Name = "AddUserToDbButton";
-            this.AddUserToDbButton.Size = new System.Drawing.Size(83, 31);
+            this.AddUserToDbButton.Size = new System.Drawing.Size(90, 42);
             this.AddUserToDbButton.TabIndex = 35;
-            this.AddUserToDbButton.Text = "Готово!";
-            this.AddUserToDbButton.UseVisualStyleBackColor = true;
+            this.AddUserToDbButton.Text = "Создать";
+            this.AddUserToDbButton.UseVisualStyleBackColor = false;
             this.AddUserToDbButton.Click += new System.EventHandler(this.AddUserToDbButton_Click);
             // 
             // LoginTextBox1

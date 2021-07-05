@@ -82,6 +82,12 @@
       <DependentUpon>AdminForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ScheduleModel.cs" />
+    <Compile Include="SignUpStudentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SignUpStudentForm.Designer.cs">
+      <DependentUpon>SignUpStudentForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -97,6 +103,8 @@
       <DependentUpon>StudentsPanel.cs</DependentUpon>
     </Compile>
     <Compile Include="Utility\DB\DBClient.cs" />
+    <Compile Include="Utility\DB\FieldsEmptyException.cs" />
+    <Compile Include="Utility\DB\UserAlreadyExistsException.cs" />
     <Compile Include="Utility\DB\UserNotFoundException.cs" />
     <Compile Include="Utility\DB\WrongPasswordException.cs" />
     <Compile Include="Utility\EnvConstants.cs" />
@@ -127,6 +135,9 @@
     </Compile>
     <EmbeddedResource Include="AdminPanels\StudentsPanel.resx">
       <DependentUpon>StudentsPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SignUpStudentForm.resx">
+      <DependentUpon>SignUpStudentForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserForm.resx">
       <DependentUpon>UserForm.cs</DependentUpon>

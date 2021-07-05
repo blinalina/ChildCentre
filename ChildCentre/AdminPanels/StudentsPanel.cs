@@ -54,5 +54,11 @@ namespace ChildCentre.AdminPanels
             }
             UpdateInformation(ListOfAllUser[StudentsComboBox.SelectedIndex]);
         }
+
+        private void SignUpStudentButton_Click(object sender, EventArgs e)
+        {
+            SignUpStudentForm frm = new SignUpStudentForm(this.StudentsComboBox); 
+            frm.Show();
+        }
     }
 }
