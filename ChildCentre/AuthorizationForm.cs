@@ -45,7 +45,6 @@ namespace ChildCentre
 
             if (res)
             {
-                Logg.Value = LoginTextBox.Text;
                 OpenMainApp();
             }
         }

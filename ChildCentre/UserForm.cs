@@ -69,9 +69,9 @@ namespace ChildCentre
 
         private void ScheduleButton_Click(object sender, EventArgs e)
         {
-            if (AccRole.Value == "1")
+            if (Properties.Settings.Default.role==(int)Role.STUDENT)
                 ActivePanel(ScheduleStudentPanel);
-            if (AccRole.Value == "2")
+            if (Properties.Settings.Default.role == (int)Role.TEACHER)
                 ActivePanel(ScheduleTeacherPanel);
         }
 

@@ -23,15 +23,11 @@ namespace ChildCentre.UsersPanels
         }
         private void InformationPanel_Load(object sender, EventArgs e)
         {
-            string[] acc = DBClient.GetAccount(Logg.Value);
-
-            AccRole.Value = acc[0];
-            NameLabel.Text = acc[1];
-            PhoneLabel.Text = acc[2];
-            EmailLabel.Text = acc[3];
-
-            //если не выйти из аккаунта, то он будет ругаца. надо сделать чтобы при открытии всего запускалась стартовая форма, а не последняя, в которой находились
-            //BirthLabel.Text = acc[4].Substring(0, 10);
+            AccountModel user=DBClient.GetAccount(Properties.Settings.Default.id);
+            NameLabel.Text =user.FullName ;
+            PhoneLabel.Text =user.PhoneNumber ;
+            EmailLabel.Text =user.Email ;
+            BirthLabel.Text =user.DateOfBirth.ToString("dd.MM.yyyy");
         }
     }
 }

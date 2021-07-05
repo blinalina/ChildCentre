@@ -24,5 +24,7 @@ namespace ChildCentre
             Email = email;
             DateOfBirth = date;
         }
+        public AccountModel() { }
+
     }
 }

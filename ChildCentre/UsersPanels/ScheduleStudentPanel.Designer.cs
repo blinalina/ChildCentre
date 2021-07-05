@@ -30,7 +30,7 @@ namespace ChildCentre.UsersPanels
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.ScheduleDataGridView = new System.Windows.Forms.DataGridView();
+            this.StudentScheduleDataGridView = new System.Windows.Forms.DataGridView();
             this.Занятие = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ПН = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ВТ = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -38,7 +38,7 @@ namespace ChildCentre.UsersPanels
             this.ЧТ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ПТ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.СБ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.ScheduleDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StudentScheduleDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -51,15 +51,15 @@ namespace ChildCentre.UsersPanels
             this.label1.TabIndex = 1;
             this.label1.Text = "Расписание занятий";
             // 
-            // ScheduleDataGridView
+            // StudentScheduleDataGridView
             // 
-            this.ScheduleDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.StudentScheduleDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.ScheduleDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.ScheduleDataGridView.BackgroundColor = System.Drawing.Color.Linen;
-            this.ScheduleDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.ScheduleDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.StudentScheduleDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.StudentScheduleDataGridView.BackgroundColor = System.Drawing.Color.Linen;
+            this.StudentScheduleDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.StudentScheduleDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Занятие,
             this.ПН,
             this.ВТ,
@@ -67,14 +67,14 @@ namespace ChildCentre.UsersPanels
             this.ЧТ,
             this.ПТ,
             this.СБ});
-            this.ScheduleDataGridView.Location = new System.Drawing.Point(2, 50);
-            this.ScheduleDataGridView.Margin = new System.Windows.Forms.Padding(2);
-            this.ScheduleDataGridView.Name = "ScheduleDataGridView";
-            this.ScheduleDataGridView.RowHeadersVisible = false;
-            this.ScheduleDataGridView.RowHeadersWidth = 10;
-            this.ScheduleDataGridView.RowTemplate.Height = 28;
-            this.ScheduleDataGridView.Size = new System.Drawing.Size(417, 185);
-            this.ScheduleDataGridView.TabIndex = 9;
+            this.StudentScheduleDataGridView.Location = new System.Drawing.Point(2, 50);
+            this.StudentScheduleDataGridView.Margin = new System.Windows.Forms.Padding(2);
+            this.StudentScheduleDataGridView.Name = "StudentScheduleDataGridView";
+            this.StudentScheduleDataGridView.RowHeadersVisible = false;
+            this.StudentScheduleDataGridView.RowHeadersWidth = 10;
+            this.StudentScheduleDataGridView.RowTemplate.Height = 28;
+            this.StudentScheduleDataGridView.Size = new System.Drawing.Size(417, 113);
+            this.StudentScheduleDataGridView.TabIndex = 9;
             // 
             // Занятие
             // 
@@ -134,12 +134,12 @@ namespace ChildCentre.UsersPanels
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.ScheduleDataGridView);
+            this.Controls.Add(this.StudentScheduleDataGridView);
             this.Controls.Add(this.label1);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "ScheduleStudentPanel";
             this.Size = new System.Drawing.Size(421, 320);
-            ((System.ComponentModel.ISupportInitialize)(this.ScheduleDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StudentScheduleDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -148,7 +148,7 @@ namespace ChildCentre.UsersPanels
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridView ScheduleDataGridView;
+        private System.Windows.Forms.DataGridView StudentScheduleDataGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn Занятие;
         private System.Windows.Forms.DataGridViewTextBoxColumn ПН;
         private System.Windows.Forms.DataGridViewTextBoxColumn ВТ;

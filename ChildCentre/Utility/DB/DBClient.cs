@@ -125,26 +125,24 @@ namespace ChildCentre.Utility.DB
             return schedule;
         }
 
-        public static string[] GetAccount(string log)
+        public static AccountModel GetAccount(int id)
         {
-            string[] acc = new string[5];
+            AccountModel account= new AccountModel();
 
             var connection = Connect();
-            string sql = "SELECT ROLE_ID, FULL_NAME, PHONE_NUMBER, EMAIL, DATE_OF_BIRTH FROM ACCOUNT WHERE  LOGIN = @login";
+            string sql = "SELECT ID, LOGIN, FULL_NAME, PHONE_NUMBER, EMAIL, DATE_OF_BIRTH FROM ACCOUNT WHERE  ID = @id";
             MySqlCommand cmd = new MySqlCommand(sql, connection);
-            cmd.Parameters.AddWithValue("login", log);
+            cmd.Parameters.AddWithValue("id", id);
 
             using (var res = cmd.ExecuteReader())
             {
                 while (res.Read())
                 {
-                    for (int i = 0; i < 5; i++)
-                        acc[i] = res.GetString(i);
+                    account = new AccountModel(res.GetInt32(0), res.GetString(1), res.GetString(2), res.GetString(3), res.GetString(4), res.GetDateTime(5));
                 }
             }
-
             connection.Close();
-            return acc;
+            return account;
         }
     }
 }
