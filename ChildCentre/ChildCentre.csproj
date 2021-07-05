@@ -102,6 +102,24 @@
     <Compile Include="AdminPanels\StudentsPanel.Designer.cs">
       <DependentUpon>StudentsPanel.cs</DependentUpon>
     </Compile>
+    <Compile Include="UsersPanels\InformationPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UsersPanels\InformationPanel.Designer.cs">
+      <DependentUpon>InformationPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UsersPanels\ScheduleStudentPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UsersPanels\ScheduleStudentPanel.Designer.cs">
+      <DependentUpon>ScheduleStudentPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UsersPanels\ScheduleTeacherPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UsersPanels\ScheduleTeacherPanel.Designer.cs">
+      <DependentUpon>ScheduleTeacherPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Utility\DB\DBClient.cs" />
     <Compile Include="Utility\DB\FieldsEmptyException.cs" />
     <Compile Include="Utility\DB\UserAlreadyExistsException.cs" />
@@ -142,6 +160,15 @@
     <EmbeddedResource Include="UserForm.resx">
       <DependentUpon>UserForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UsersPanels\InformationPanel.resx">
+      <DependentUpon>InformationPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UsersPanels\ScheduleStudentPanel.resx">
+      <DependentUpon>ScheduleStudentPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UsersPanels\ScheduleTeacherPanel.resx">
+      <DependentUpon>ScheduleTeacherPanel.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -155,5 +182,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
