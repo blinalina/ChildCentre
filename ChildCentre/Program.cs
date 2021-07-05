@@ -18,5 +18,6 @@ namespace ChildCentre
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new AuthorizationForm());
         }
+       
     }
 }

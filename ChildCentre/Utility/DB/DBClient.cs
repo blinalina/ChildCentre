@@ -124,9 +124,7 @@ namespace ChildCentre.Utility.DB
             connection.Close();
             return schedule;
         }
-
-
-
+      
         public static bool ControlAddUserToDb(string login, string password, string role, string fullname, string birth, string number, string email)
         {
             login = login.Trim();
@@ -189,8 +187,9 @@ namespace ChildCentre.Utility.DB
                 throw new UserNotFoundException();
             }
             return true;
-            
+
         }
+      
         public static bool AddUserToDb(string login, string password, string role, string fullname, string birth, string number, string email)
         {
             login = login.Trim();
@@ -224,9 +223,29 @@ namespace ChildCentre.Utility.DB
             {
                 throw new UserNotFoundException();
             }
-            
+
              return true;
-            
+
         }
+        public static AccountModel GetAccount(int id)
+        {
+            AccountModel account= new AccountModel();
+
+            var connection = Connect();
+            string sql = "SELECT ID, LOGIN, FULL_NAME, PHONE_NUMBER, EMAIL, DATE_OF_BIRTH FROM ACCOUNT WHERE  ID = @id";
+            MySqlCommand cmd = new MySqlCommand(sql, connection);
+            cmd.Parameters.AddWithValue("id", id);
+
+            using (var res = cmd.ExecuteReader())
+            {
+                while (res.Read())
+                {
+                    account = new AccountModel(res.GetInt32(0), res.GetString(1), res.GetString(2), res.GetString(3), res.GetString(4), res.GetDateTime(5));
+                }
+            }
+            connection.Close();
+            return account;
+        }
+    
     }
-}
+  }
