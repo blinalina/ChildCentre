@@ -124,5 +124,27 @@ namespace ChildCentre.Utility.DB
             connection.Close();
             return schedule;
         }
+
+        public static string[] GetAccount(string log)
+        {
+            string[] acc = new string[5];
+
+            var connection = Connect();
+            string sql = "SELECT ROLE_ID, FULL_NAME, PHONE_NUMBER, EMAIL, DATE_OF_BIRTH FROM ACCOUNT WHERE  LOGIN = @login";
+            MySqlCommand cmd = new MySqlCommand(sql, connection);
+            cmd.Parameters.AddWithValue("login", log);
+
+            using (var res = cmd.ExecuteReader())
+            {
+                while (res.Read())
+                {
+                    for (int i = 0; i < 5; i++)
+                        acc[i] = res.GetString(i);
+                }
+            }
+
+            connection.Close();
+            return acc;
+        }
     }
 }

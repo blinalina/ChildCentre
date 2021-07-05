@@ -18,5 +18,14 @@ namespace ChildCentre
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new AuthorizationForm());
         }
+       
+    }
+    static class Logg
+    {
+        public static string Value { get; set; }
+    }
+    static class AccRole
+    {
+        public static string Value { get; set; }
     }
 }
