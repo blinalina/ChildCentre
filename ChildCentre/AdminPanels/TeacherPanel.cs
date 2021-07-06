@@ -53,5 +53,28 @@ namespace ChildCentre.AdminPanels
             }
             UpdateInformation(ListOfAllUser[TeacherComboBox.SelectedIndex]);
         }
+
+        private void EditAccountButton_Click(object sender, EventArgs e)
+        {
+            if (TeacherComboBox.SelectedIndex == -1)
+            {
+                return;
+            }
+            EditUserForm editUserForm = new EditUserForm(ListOfAllUser[TeacherComboBox.SelectedIndex]);
+            if (editUserForm.ShowDialog() == DialogResult.OK)
+            {
+                ListOfAllUser[TeacherComboBox.SelectedIndex] = editUserForm.Account;
+                UpdateInformation(ListOfAllUser[TeacherComboBox.SelectedIndex]);
+            }
+        }
+
+        private void TeacherPanel_VisibleChanged(object sender, EventArgs e)
+        {
+            if (!Visible)
+            {
+                ClearInformation();
+                TeacherComboBox.SelectedIndex = -1;
+            }
+        }
     }
 }

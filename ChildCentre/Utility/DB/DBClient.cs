@@ -20,6 +20,25 @@ namespace ChildCentre.Utility.DB
             ";port=" + "3306" +
             ";password=" + "XcBiM1R2Ay" + ";convert zero datetime = True;";
 
+        public static string GetPasswordByID(int id)
+        {
+            var connection = Connect();
+            string sql = "SELECT PASSWORD FROM ACCOUNT WHERE ID = @id";
+            MySqlCommand cmd = new MySqlCommand(sql, connection);
+            cmd.Parameters.AddWithValue("id", id);
+
+            string password = "";
+            using (var res = cmd.ExecuteReader())
+            {
+                while (res.Read())
+                {
+                    password = res.GetString(0);
+                }
+            }
+            connection.Close();
+            return password;
+        }
+
         private static MySqlConnection Connect() 
         {
             MySqlConnection connection = new MySqlConnection();
@@ -123,6 +142,22 @@ namespace ChildCentre.Utility.DB
             }
             connection.Close();
             return schedule;
+        }
+
+        public static void UpdateAccountUnformation(AccountModel account, string password)
+        {
+            var connection = Connect();
+            string sql = "UPDATE ACCOUNT SET FULL_NAME = @fullname, DATE_OF_BIRTH = @date_of_birth, PHONE_NUMBER = @phone_number, EMAIL = @email, LOGIN = @login, PASSWORD = @password WHERE ID = @id";
+            MySqlCommand cmd = new MySqlCommand(sql, connection);
+            cmd.Parameters.AddWithValue("fullname", account.FullName);
+            cmd.Parameters.AddWithValue("date_of_birth", account.DateOfBirth);
+            cmd.Parameters.AddWithValue("phone_number", account.PhoneNumber);
+            cmd.Parameters.AddWithValue("email", account.Email);
+            cmd.Parameters.AddWithValue("login", account.Login);
+            cmd.Parameters.AddWithValue("password", password);
+            cmd.Parameters.AddWithValue("id", account.ID);
+            cmd.ExecuteNonQuery();
+            connection.Close();
         }
     }
 }
