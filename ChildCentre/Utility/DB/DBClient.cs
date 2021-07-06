@@ -20,6 +20,25 @@ namespace ChildCentre.Utility.DB
             ";port=" + "3306" +
             ";password=" + "XcBiM1R2Ay" + ";convert zero datetime = True;";
 
+        public static string GetPasswordByID(int id)
+        {
+            var connection = Connect();
+            string sql = "SELECT PASSWORD FROM ACCOUNT WHERE ID = @id";
+            MySqlCommand cmd = new MySqlCommand(sql, connection);
+            cmd.Parameters.AddWithValue("id", id);
+
+            string password = "";
+            using (var res = cmd.ExecuteReader())
+            {
+                while (res.Read())
+                {
+                    password = res.GetString(0);
+                }
+            }
+            connection.Close();
+            return password;
+        }
+
         private static MySqlConnection Connect() 
         {
             MySqlConnection connection = new MySqlConnection();
@@ -124,7 +143,6 @@ namespace ChildCentre.Utility.DB
             connection.Close();
             return schedule;
         }
-      
         public static bool ControlAddUserToDb(string login, string password, string role, string fullname, string birth, string number, string email)
         {
             login = login.Trim();
@@ -421,45 +439,20 @@ namespace ChildCentre.Utility.DB
 
             return true;
         }
-        public static List<ScheduleModel> GetTeacherSchedule(int teach_id)
-        {          
-            List<ScheduleModel> schedule = new List<ScheduleModel>();
-
-            var connection = Connect();
-            string sql = "SELECT ID, ID_COURS, (SELECT NAME FROM COURSES C WHERE C.ID = ID_COURS), ID_TEACHER, DAY_OF_THE_WEEK, START_TIME, END_TIME, CLASS FROM SCHEDULE WHERE ID_TEACHER=@teach_id";
-            MySqlCommand cmd = new MySqlCommand(sql, connection);
-            cmd.Parameters.AddWithValue("teach_id", teach_id);
-
-            using (var res = cmd.ExecuteReader())
-            {
-                while (res.Read())
-                {
-                    ScheduleModel line = new ScheduleModel(res.GetInt32(0), res.GetInt32(1), res.GetString(2), res.GetInt32(3), res.GetString(4), res.GetDateTime(5), res.GetDateTime(6), res.GetString(7));
-                    schedule.Add(line);
-                }
-            }
-            connection.Close();
-            return schedule;
-        }
-        public static List<ScheduleModel> GetStudentSchedule(int stud_id)
+        public static void UpdateAccountUnformation(AccountModel account, string password)
         {
-            List<ScheduleModel> schedule = new List<ScheduleModel>();
-
             var connection = Connect();
-            string sql = "SELECT ID, ID_COURS, (SELECT NAME FROM COURSES C WHERE C.ID = ID_COURS), ID_TEACHER, DAY_OF_THE_WEEK, START_TIME, END_TIME, CLASS FROM SCHEDULE WHERE ID IN (SELECT ID_SCHEDULE FROM SCHEDULE_STUDENTS WHERE ID_STUDENTS=@stud_id)";
+            string sql = "UPDATE ACCOUNT SET FULL_NAME = @fullname, DATE_OF_BIRTH = @date_of_birth, PHONE_NUMBER = @phone_number, EMAIL = @email, LOGIN = @login, PASSWORD = @password WHERE ID = @id";
             MySqlCommand cmd = new MySqlCommand(sql, connection);
-            cmd.Parameters.AddWithValue("stud_id", stud_id);
-
-            using (var res = cmd.ExecuteReader())
-            {
-                while (res.Read())
-                {
-                    ScheduleModel line = new ScheduleModel(res.GetInt32(0), res.GetInt32(1), res.GetString(2), res.GetInt32(3), res.GetString(4), res.GetDateTime(5), res.GetDateTime(6), res.GetString(7));
-                    schedule.Add(line);
-                }
-            }
+            cmd.Parameters.AddWithValue("fullname", account.FullName);
+            cmd.Parameters.AddWithValue("date_of_birth", account.DateOfBirth);
+            cmd.Parameters.AddWithValue("phone_number", account.PhoneNumber);
+            cmd.Parameters.AddWithValue("email", account.Email);
+            cmd.Parameters.AddWithValue("login", account.Login);
+            cmd.Parameters.AddWithValue("password", password);
+            cmd.Parameters.AddWithValue("id", account.ID);
+            cmd.ExecuteNonQuery();
             connection.Close();
-            return schedule;
         }
     }
   }

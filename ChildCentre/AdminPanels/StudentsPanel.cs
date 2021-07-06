@@ -1,4 +1,5 @@
-﻿using System;
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -49,13 +50,35 @@ namespace ChildCentre.AdminPanels
         {
             if(StudentsComboBox.SelectedIndex == -1)
             {
-
                 ClearInformation();
                 return;
             }
             UpdateInformation(ListOfAllUser[StudentsComboBox.SelectedIndex]);
         }
 
+        private void EditAccountButton_Click(object sender, EventArgs e)
+        {
+            if (StudentsComboBox.SelectedIndex == -1)
+            {
+                return;
+            }
+            EditUserForm editUserForm = new EditUserForm(ListOfAllUser[StudentsComboBox.SelectedIndex]);
+            if (editUserForm.ShowDialog() == DialogResult.OK)
+            {
+                ListOfAllUser[StudentsComboBox.SelectedIndex] = editUserForm.Account;
+                UpdateInformation(ListOfAllUser[StudentsComboBox.SelectedIndex]);
+            }
+        }
+
+        private void StudentsPanel_VisibleChanged(object sender, EventArgs e)
+        {
+            if (!Visible)
+            {
+                ClearInformation();
+                StudentsComboBox.SelectedIndex = -1;
+            }
+        }
+        
         private void SignUpStudentButton_Click(object sender, EventArgs e)
         {
             SignUpStudentForm frm = new SignUpStudentForm(this.StudentsComboBox); 

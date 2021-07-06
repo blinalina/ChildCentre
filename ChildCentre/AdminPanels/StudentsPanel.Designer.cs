@@ -90,6 +90,7 @@ namespace ChildCentre.AdminPanels
             this.EditAccountButton.TabIndex = 28;
             this.EditAccountButton.Text = "Редактировать аккаунт";
             this.EditAccountButton.UseVisualStyleBackColor = false;
+            this.EditAccountButton.Click += new System.EventHandler(this.EditAccountButton_Click);
             // 
             // EmailLabel
             // 
@@ -149,7 +150,7 @@ namespace ChildCentre.AdminPanels
             // 
             this.FullNameLabel.AutoSize = true;
             this.FullNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.FullNameLabel.Location = new System.Drawing.Point(133, 135);
+            this.FullNameLabel.Location = new System.Drawing.Point(147, 152);
             this.FullNameLabel.Name = "FullNameLabel";
             this.FullNameLabel.Size = new System.Drawing.Size(121, 25);
             this.FullNameLabel.TabIndex = 19;
@@ -223,7 +224,8 @@ namespace ChildCentre.AdminPanels
             this.Controls.Add(this.label1);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "StudentsPanel";
-            this.Size = new System.Drawing.Size(561, 394);
+            this.Size = new System.Drawing.Size(631, 493);
+            this.VisibleChanged += new System.EventHandler(this.StudentsPanel_VisibleChanged);
             this.ResumeLayout(false);
             this.PerformLayout();
 
