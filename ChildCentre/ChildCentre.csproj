@@ -88,6 +88,12 @@
       <DependentUpon>EditUserForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ScheduleModel.cs" />
+    <Compile Include="SignUpStudentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SignUpStudentForm.Designer.cs">
+      <DependentUpon>SignUpStudentForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -102,7 +108,27 @@
     <Compile Include="AdminPanels\StudentsPanel.Designer.cs">
       <DependentUpon>StudentsPanel.cs</DependentUpon>
     </Compile>
+    <Compile Include="UsersPanels\InformationPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UsersPanels\InformationPanel.Designer.cs">
+      <DependentUpon>InformationPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UsersPanels\ScheduleStudentPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UsersPanels\ScheduleStudentPanel.Designer.cs">
+      <DependentUpon>ScheduleStudentPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UsersPanels\ScheduleTeacherPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UsersPanels\ScheduleTeacherPanel.Designer.cs">
+      <DependentUpon>ScheduleTeacherPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Utility\DB\DBClient.cs" />
+    <Compile Include="Utility\DB\FieldsEmptyException.cs" />
+    <Compile Include="Utility\DB\UserAlreadyExistsException.cs" />
     <Compile Include="Utility\DB\UserNotFoundException.cs" />
     <Compile Include="Utility\DB\WrongPasswordException.cs" />
     <Compile Include="Utility\EnvConstants.cs" />
@@ -137,8 +163,20 @@
     <EmbeddedResource Include="AdminPanels\StudentsPanel.resx">
       <DependentUpon>StudentsPanel.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SignUpStudentForm.resx">
+      <DependentUpon>SignUpStudentForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserForm.resx">
       <DependentUpon>UserForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UsersPanels\InformationPanel.resx">
+      <DependentUpon>InformationPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UsersPanels\ScheduleStudentPanel.resx">
+      <DependentUpon>ScheduleStudentPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UsersPanels\ScheduleTeacherPanel.resx">
+      <DependentUpon>ScheduleTeacherPanel.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -153,5 +191,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -143,7 +143,302 @@ namespace ChildCentre.Utility.DB
             connection.Close();
             return schedule;
         }
+        public static bool ControlAddUserToDb(string login, string password, string role, string fullname, string birth, string number, string email)
+        {
+            login = login.Trim();
+            password = password.Trim();
+            role = role.Trim();
+            fullname = fullname.Trim();
+            birth = birth.Trim();
+            number = number.Trim();
+            email = email.Trim();
+            if (login.Length == 0)
+            {
+                return false;
+            }
+            if (password.Length == 0)
+            {
+                return false;
+            }
+            if (role.Length == 0)
+            {
+                return false;
+            }
+            if (fullname.Length == 0)
+            {
+                return false;
+            }
+            if (birth.Length == 0)
+            {
+                return false;
+            }
+            if (number.Length == 0)
+            {
+                return false;
+            }
+            if (email.Length == 0)
+            {
+                return false;
+            }
 
+            var connection = Connect();
+            string sql = "SELECT LOGIN, PASSWORD FROM ACCOUNT WHERE LOGIN = @login AND PASSWORD = @password ";
+            MySqlCommand cmd = new MySqlCommand(sql, connection);
+            cmd.Parameters.AddWithValue("login", login);
+            cmd.Parameters.AddWithValue("password", password);
+
+            string passwordFromDB = "";
+            string loginFromDB = "";
+
+            using (var res = cmd.ExecuteReader())
+            {
+                while (res.Read())
+                {
+                    loginFromDB = res.GetString(0);
+                    passwordFromDB = res.GetString(1);
+
+                }
+            }
+            connection.Close();
+            if (login == loginFromDB && password == passwordFromDB)
+            {
+                throw new UserNotFoundException();
+            }
+            return true;
+
+        }
+      
+        public static bool AddUserToDb(string login, string password, string role, string fullname, string birth, string number, string email)
+        {
+            login = login.Trim();
+            password = password.Trim();
+            role = role.Trim();
+            fullname = fullname.Trim();
+            birth = birth.Trim();
+            number = number.Trim();
+            email = email.Trim();
+            int OK;
+
+            var connection = Connect();
+
+            string sql1 = "INSERT INTO `ACCOUNT` (`LOGIN`, `PASSWORD`, `ROLE_ID`, `FULL_NAME`, `DATE_OF_BIRTH`, `PHONE_NUMBER`, `EMAIL`) VALUES (@login, @password, @role, @fullname, @birth, @number, @email);";
+            MySqlCommand cmd1 = new MySqlCommand(sql1, connection);
+            cmd1.Parameters.AddWithValue("login", login);
+            cmd1.Parameters.AddWithValue("password", password);
+            cmd1.Parameters.AddWithValue("role", role);
+            cmd1.Parameters.AddWithValue("fullname", fullname);
+            cmd1.Parameters.AddWithValue("birth",birth);
+            cmd1.Parameters.AddWithValue("number", number);
+            cmd1.Parameters.AddWithValue("email", email);
+            if (cmd1.ExecuteNonQuery() != 1)
+                OK = -1;
+            else
+                OK = 1;
+
+            connection.Close();
+
+            if (OK == -1)
+            {
+                throw new UserNotFoundException();
+            }
+
+             return true;
+
+        }
+        public static AccountModel GetAccount(int id)
+        {
+            AccountModel account= new AccountModel();
+
+            var connection = Connect();
+            string sql = "SELECT ID, LOGIN, FULL_NAME, PHONE_NUMBER, EMAIL, DATE_OF_BIRTH FROM ACCOUNT WHERE  ID = @id";
+            MySqlCommand cmd = new MySqlCommand(sql, connection);
+            cmd.Parameters.AddWithValue("id", id);
+
+            using (var res = cmd.ExecuteReader())
+            {
+                while (res.Read())
+                {
+                    account = new AccountModel(res.GetInt32(0), res.GetString(1), res.GetString(2), res.GetString(3), res.GetString(4), res.GetDateTime(5));
+                }
+            }
+            connection.Close();
+            return account;
+        }
+      
+        public static string[] AddLessonsFromDB()
+        {
+            var connection = Connect();
+            string sql = "SELECT * FROM COURSES ";
+            MySqlCommand cmd = new MySqlCommand(sql, connection);
+
+            var IdFromDB = new List<int>();
+            var LessonFromDB = new List<string>();
+
+            using (var res = cmd.ExecuteReader())
+            {
+                while (res.Read())
+                {
+                    IdFromDB.Add(res.GetInt32(0));
+                    LessonFromDB.Add(res.GetString(1));
+
+                }
+            }
+            connection.Close();
+            string[] listLessons = LessonFromDB.Select(n => n.ToString()).ToArray();
+            return listLessons;
+        }
+      
+        public static string[] AddTeachersFromDB(int idLesson)
+        {
+            var connection = Connect();
+            string sql = "SELECT DISTINCT FULL_NAME FROM SCHEDULE sc, ACCOUNT ac WHERE ID_COURS = @idLesson AND ac.ID = ID_TEACHER";
+            MySqlCommand cmd = new MySqlCommand(sql, connection);
+
+            cmd.Parameters.AddWithValue("idLesson", idLesson);
+
+            var TeacherFromDB = new List<string>();
+
+            using (var res = cmd.ExecuteReader())
+            {
+                while (res.Read())
+                {
+                    TeacherFromDB.Add(res.GetString(0));
+                }
+            }
+            connection.Close();
+            string[] listTeachers = TeacherFromDB.Select(n => n.ToString()).ToArray();
+            return listTeachers;
+        }
+      
+        public static string[] AddDayAndTimeFromDB(int idLesson, string idTeacher)
+        {
+            var connection = Connect();
+            string sql = "SELECT DAY_OF_THE_WEEK, START_TIME FROM SCHEDULE  WHERE ID_COURS = @idLesson AND (SELECT ID FROM ACCOUNT WHERE FULL_NAME = @idTeacher ) = ID_TEACHER";
+            MySqlCommand cmd = new MySqlCommand(sql, connection);
+
+            cmd.Parameters.AddWithValue("idLesson", idLesson);
+            cmd.Parameters.AddWithValue("idTeacher", idTeacher);
+
+            var DayFromDB = new List<string>();
+            var TimeFromDB = new List<string>();
+
+            using (var res = cmd.ExecuteReader())
+            {
+                while (res.Read())
+                {
+                    DayFromDB.Add(res.GetString(0));
+                    TimeFromDB.Add(res.GetString(1));
+                }
+            }
+
+            connection.Close();
+            string[] listDay = DayFromDB.Select(n => n.ToString()).ToArray();
+            string[] listTime = TimeFromDB.Select(n => n.ToString()).ToArray();
+            string[] listDayAndTime = new string[listDay.Length];
+            for(int i = 0; i < listDay.Length; i++)
+            {
+                listDayAndTime[i] += $"{listDay[i]} {listTime[i]}";
+            }
+            return listDayAndTime;
+        }
+      
+        public static string[] SignUpStudent(string fullnameStudent, string fullnameTeacher, string idLesson,string nameDayTime )
+        {
+            if (fullnameStudent.Length == 0 )
+            {
+                throw new UserNotFoundException();
+            }
+            if (fullnameTeacher.Length == 0 || idLesson.Length == 0 || nameDayTime.Length == 0)
+            {
+                throw new FieldsEmptyException();
+            }
+            string[] nDAT = nameDayTime.Split();
+            string nameDay = nDAT[0];
+            string nameTime = nDAT[1];
+            var connection = Connect();
+            string sql = "SELECT ac.ID, sc.ID FROM ACCOUNT ac, SCHEDULE sc WHERE FULL_NAME = @fullnameStudent AND (SELECT ID FROM ACCOUNT WHERE FULL_NAME = @fullnameTeacher) = ID_TEACHER AND DAY_OF_THE_WEEK = @nameDay AND START_TIME = @nameTime AND ID_COURS = @idLesson";
+            MySqlCommand cmd = new MySqlCommand(sql, connection);
+            cmd.Parameters.AddWithValue("fullnameStudent", fullnameStudent);
+            cmd.Parameters.AddWithValue("fullnameTeacher", fullnameTeacher);
+            cmd.Parameters.AddWithValue("idLesson", idLesson);
+            cmd.Parameters.AddWithValue("nameDay", nameDay);
+            cmd.Parameters.AddWithValue("nameTime", nameTime);
+
+            string IdStudentFromDB = "";
+            string IdScheduleFromDB = "";
+
+            using (var res = cmd.ExecuteReader())
+            {
+                while (res.Read())
+                {
+                    IdStudentFromDB = res.GetString(0);
+                    IdScheduleFromDB = res.GetString(1);
+
+                }
+            }
+            
+            string[] id_St_Sc = new string[2];
+            if (IdScheduleFromDB == "" && IdStudentFromDB == "")
+            {
+                throw new UserNotFoundException();
+            }
+            id_St_Sc[0] = IdStudentFromDB;
+            id_St_Sc[1] = IdScheduleFromDB;
+
+            string IdStudentFromDB1 = "";
+            string IdScheduleFromDB1 = "";
+            string sql1 = "SELECT * FROM SCHEDULE_STUDENTS WHERE ID_STUDENTS = @IdStudentFromDB AND ID_SCHEDULE = @IdScheduleFromDB";
+            MySqlCommand cmd1 = new MySqlCommand(sql1, connection);
+            cmd1.Parameters.AddWithValue("IdStudentFromDB", IdStudentFromDB);
+            cmd1.Parameters.AddWithValue("IdScheduleFromDB", IdScheduleFromDB);
+           
+            using (var res1 = cmd1.ExecuteReader())
+            {
+                while (res1.Read())
+                {
+                    IdStudentFromDB1 = res1.GetString(0);
+                    IdScheduleFromDB1 = res1.GetString(1);
+
+                }
+            }
+            if (IdScheduleFromDB == IdStudentFromDB1 && IdStudentFromDB == IdScheduleFromDB1)
+            {
+                throw new UserAlreadyExistsException();
+            }
+            connection.Close();
+            return id_St_Sc;
+        }
+      
+        public static bool SignUpStudent(string idStudent, string idSchedule)
+        {
+            if (idStudent.Length == 0)
+                return false;
+            if (idSchedule.Length == 0)
+                return false;
+              
+            int OK;
+
+            var connection = Connect();
+
+            string sql1 = "INSERT INTO `SCHEDULE_STUDENTS` (`ID_STUDENTS`, `ID_SCHEDULE`) VALUES (@idStudent, @idSchedule);";
+            MySqlCommand cmd1 = new MySqlCommand(sql1, connection);
+            cmd1.Parameters.AddWithValue("idStudent", idStudent);
+            cmd1.Parameters.AddWithValue("idSchedule", idSchedule);
+          
+            if (cmd1.ExecuteNonQuery() != 1)
+                OK = -1;
+            else
+                OK = 1;
+
+            connection.Close();
+
+            if (OK == -1)
+            {
+                throw new UserAlreadyExistsException();
+            }
+
+            return true;
+        }
         public static void UpdateAccountUnformation(AccountModel account, string password)
         {
             var connection = Connect();
@@ -160,4 +455,4 @@ namespace ChildCentre.Utility.DB
             connection.Close();
         }
     }
-}
+  }

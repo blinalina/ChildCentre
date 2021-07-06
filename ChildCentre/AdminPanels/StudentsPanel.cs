@@ -1,5 +1,4 @@
-﻿using ChildCentre.Utility;
-using ChildCentre.Utility.DB;
+
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
 
 namespace ChildCentre.AdminPanels
 {
@@ -77,6 +77,12 @@ namespace ChildCentre.AdminPanels
                 ClearInformation();
                 StudentsComboBox.SelectedIndex = -1;
             }
+        }
+        
+        private void SignUpStudentButton_Click(object sender, EventArgs e)
+        {
+            SignUpStudentForm frm = new SignUpStudentForm(this.StudentsComboBox); 
+            frm.Show();
         }
     }
 }

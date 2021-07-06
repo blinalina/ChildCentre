@@ -14,7 +14,7 @@ using ChildCentre.Utility;
 namespace ChildCentre
 {
     public partial class AuthorizationForm : Form
-    {
+    {        
         public AuthorizationForm()
         {
             InitializeComponent();
@@ -63,7 +63,7 @@ namespace ChildCentre
                 var UserForm = new UserForm();
                 UserForm.Closed += (s, args) => Close();
                 UserForm.Show();
-            }
+            }            
         }
 
         private void AuthorizationForm_Shown(object sender, EventArgs e)
