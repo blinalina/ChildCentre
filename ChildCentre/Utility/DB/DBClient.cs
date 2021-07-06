@@ -494,5 +494,36 @@ namespace ChildCentre.Utility.DB
             connection.Close();
             return schedule;
         }
+
+        public static bool ChangingPassword(int idUser, string OldPass, string NewPass)
+        {
+            OldPass = OldPass.Trim();
+            NewPass = NewPass.Trim();
+            if (NewPass.Length < 5)
+                return false;
+            int OK;
+
+            var connection = Connect();
+
+            string sql = "UPDATE ACCOUNT SET PASSWORD = @newpass WHERE ACCOUNT.ID = @idUser AND ACCOUNT.PASSWORD = @oldpass;";
+            MySqlCommand cmd = new MySqlCommand(sql, connection);
+            cmd.Parameters.AddWithValue("idUser", idUser);
+            cmd.Parameters.AddWithValue("oldpass", OldPass);
+            cmd.Parameters.AddWithValue("newpass", NewPass);
+         
+            if (cmd.ExecuteNonQuery() != 1)
+                OK = -1;
+            else
+                OK = 1;
+
+            connection.Close();
+
+            if (OK == -1)
+            {
+                throw new WrongPasswordException();
+            }
+
+            return true;
+        }
     }
   }
