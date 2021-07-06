@@ -77,7 +77,8 @@ namespace ChildCentre
 
         private void ChangePassBotton_Click(object sender, EventArgs e)
         {
-
+            ChangingPasswordForm frm = new ChangingPasswordForm();
+            frm.Show();
         }
     }
 }
