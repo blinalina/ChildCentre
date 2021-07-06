@@ -387,7 +387,7 @@ namespace ChildCentre.Utility.DB
 
             string IdStudentFromDB1 = "";
             string IdScheduleFromDB1 = "";
-            string sql1 = "SELECT * FROM SCHEDULE_STUDENTS WHERE ID_STUDENTS = @IdStudentFromDB AND ID_SCHEDULE = @IdScheduleFromDB";
+            string sql1 = "SELECT ID_STUDENTS, ID_SCHEDULE FROM SCHEDULE_STUDENTS WHERE ID_STUDENTS = @IdStudentFromDB AND ID_SCHEDULE = @IdScheduleFromDB";
             MySqlCommand cmd1 = new MySqlCommand(sql1, connection);
             cmd1.Parameters.AddWithValue("IdStudentFromDB", IdStudentFromDB);
             cmd1.Parameters.AddWithValue("IdScheduleFromDB", IdScheduleFromDB);
@@ -401,7 +401,7 @@ namespace ChildCentre.Utility.DB
 
                 }
             }
-            if (IdScheduleFromDB == IdStudentFromDB1 && IdStudentFromDB == IdScheduleFromDB1)
+            if (IdStudentFromDB == IdStudentFromDB1 && IdScheduleFromDB == IdScheduleFromDB1)
             {
                 throw new UserAlreadyExistsException();
             }
