@@ -15,19 +15,50 @@ namespace ChildCentre.UsersPanels
 {
     public partial class ScheduleStudentPanel : UserControl
     {
-        public ScheduleStudentPanel()
+        int idfrom;
+        public ScheduleStudentPanel(int idfr)
         {
+            idfrom = idfr;
             InitializeComponent();
             GetSchedule();
         }
         public void GetSchedule()
         {
+            StudentScheduleDataGridView.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+
             List<ScheduleModel> schedule = new List<ScheduleModel>();
-            schedule = DBClient.GetStudentSchedule(Properties.Settings.Default.id);
+            schedule = DBClient.GetStudentSchedule(idfrom);
+
+            Dictionary<string, int> lines = new Dictionary<string, int>();
+            int n = 0;
             for (int i = 0; i < schedule.Count; i++)
             {
-                StudentScheduleDataGridView.Rows.Add(schedule[i].Cours_name, schedule[i].Class_room, schedule[i].Day_of_the_week);
+                if (!lines.ContainsKey(schedule[i].Cours_name))
+                {
+                    lines.Add(schedule[i].Cours_name, n);
+                    n++;
+                }
+                else
+                    continue;
             }
+
+            foreach (var pair in lines)
+            {
+                StudentScheduleDataGridView.Rows.Add(pair.Key);
+
+                for (int k = 0; k < schedule.Count; k++)
+                {
+                    if (pair.Key == schedule[k].Cours_name)
+                    {
+                        StudentScheduleDataGridView[schedule[k].Day_of_the_week, pair.Value].Value = schedule[k].Class_room + "\n" + schedule[k].St_time.Substring(0, 5) + " -" + schedule[k].En_time.Substring(0, 5) + "\n" + schedule[k].Name_teacher;
+                    }
+
+                }
+            }
+
+            StudentScheduleDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            StudentScheduleDataGridView.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            StudentScheduleDataGridView.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
         }
     }
 }
