@@ -26,11 +26,11 @@ namespace ChildCentre
             InformationPanel.Visible = true;
             MainPanel.Controls.Add(InformationPanel);
 
-            ScheduleStudentPanel = new ScheduleStudentPanel();
+            ScheduleStudentPanel = new ScheduleStudentPanel(Properties.Settings.Default.id);
             ScheduleStudentPanel.Visible = false;
             MainPanel.Controls.Add(ScheduleStudentPanel);
 
-            ScheduleTeacherPanel = new ScheduleTeacherPanel();
+            ScheduleTeacherPanel = new ScheduleTeacherPanel(Properties.Settings.Default.id);
             ScheduleTeacherPanel.Visible = false;
             MainPanel.Controls.Add(ScheduleTeacherPanel);
         }

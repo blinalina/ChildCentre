@@ -48,7 +48,7 @@ namespace ChildCentre.AdminPanels
 
         private void StudentsComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(StudentsComboBox.SelectedIndex == -1)
+            if (StudentsComboBox.SelectedIndex == -1)
             {
                 ClearInformation();
                 return;
@@ -78,11 +78,25 @@ namespace ChildCentre.AdminPanels
                 StudentsComboBox.SelectedIndex = -1;
             }
         }
-        
+
         private void SignUpStudentButton_Click(object sender, EventArgs e)
         {
-            SignUpStudentForm frm = new SignUpStudentForm(this.StudentsComboBox); 
+            SignUpStudentForm frm = new SignUpStudentForm(this.StudentsComboBox);
             frm.Show();
         }
+
+        private void ScheduleStudentButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                StudentScheduleForm form = new StudentScheduleForm(ListOfAllUser[StudentsComboBox.SelectedIndex].ID);
+                form.Show();
+            }
+            catch(Exception)
+            {
+                MessageBox.Show("Выберите ученика!");
+            }
+        }
+
     }
 }

@@ -459,7 +459,7 @@ namespace ChildCentre.Utility.DB
             List<ScheduleModel> schedule = new List<ScheduleModel>();
 
             var connection = Connect();
-            string sql = "SELECT ID, ID_COURS, (SELECT NAME FROM COURSES C WHERE C.ID = ID_COURS), ID_TEACHER, DAY_OF_THE_WEEK, START_TIME, END_TIME, CLASS FROM SCHEDULE WHERE ID_TEACHER=@teach_id";
+            string sql = "SELECT ID, ID_COURS, (SELECT NAME FROM COURSES C WHERE C.ID = ID_COURS), (SELECT FULL_NAME FROM ACCOUNT A WHERE A.ID =ID_TEACHER), DAY_OF_THE_WEEK, START_TIME, END_TIME, CLASS FROM SCHEDULE WHERE ID_TEACHER=@teach_id";
             MySqlCommand cmd = new MySqlCommand(sql, connection);
             cmd.Parameters.AddWithValue("teach_id", teach_id);
 
@@ -467,7 +467,7 @@ namespace ChildCentre.Utility.DB
             {
                 while (res.Read())
                 {
-                    ScheduleModel line = new ScheduleModel(res.GetInt32(0), res.GetInt32(1), res.GetString(2), res.GetInt32(3), res.GetString(4), res.GetDateTime(5), res.GetDateTime(6), res.GetString(7));
+                    ScheduleModel line = new ScheduleModel(res.GetInt32(0), res.GetInt32(1), res.GetString(2), res.GetString(3), res.GetString(4), res.GetString(5), res.GetString(6), res.GetString(7));
                     schedule.Add(line);
                 }
             }
@@ -479,7 +479,7 @@ namespace ChildCentre.Utility.DB
             List<ScheduleModel> schedule = new List<ScheduleModel>();
 
             var connection = Connect();
-            string sql = "SELECT ID, ID_COURS, (SELECT NAME FROM COURSES C WHERE C.ID = ID_COURS), ID_TEACHER, DAY_OF_THE_WEEK, START_TIME, END_TIME, CLASS FROM SCHEDULE WHERE ID IN (SELECT ID_SCHEDULE FROM SCHEDULE_STUDENTS WHERE ID_STUDENTS=@stud_id)";
+            string sql = "SELECT ID, ID_COURS, (SELECT NAME FROM COURSES C WHERE C.ID = ID_COURS), (SELECT FULL_NAME FROM ACCOUNT A WHERE A.ID =ID_TEACHER), DAY_OF_THE_WEEK, START_TIME, END_TIME, CLASS FROM SCHEDULE WHERE ID IN (SELECT ID_SCHEDULE FROM SCHEDULE_STUDENTS WHERE ID_STUDENTS=@stud_id)";
             MySqlCommand cmd = new MySqlCommand(sql, connection);
             cmd.Parameters.AddWithValue("stud_id", stud_id);
 
@@ -487,7 +487,7 @@ namespace ChildCentre.Utility.DB
             {
                 while (res.Read())
                 {
-                    ScheduleModel line = new ScheduleModel(res.GetInt32(0), res.GetInt32(1), res.GetString(2), res.GetInt32(3), res.GetString(4), res.GetDateTime(5), res.GetDateTime(6), res.GetString(7));
+                    ScheduleModel line = new ScheduleModel(res.GetInt32(0), res.GetInt32(1), res.GetString(2), res.GetString(3), res.GetString(4), res.GetString(5), res.GetString(6), res.GetString(7));
                     schedule.Add(line);
                 }
             }

@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ChildCentre.Utility;
+using ChildCentre.Utility.DB;
 
 namespace ChildCentre.AdminPanels
 {
@@ -15,6 +17,7 @@ namespace ChildCentre.AdminPanels
         public SchedulePanel()
         {
             InitializeComponent();
+            ScheduleDataGridView.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
         }
         List<ScheduleModel> ListOfAllSchedule = new List<ScheduleModel>();
         public void UpdateListOfCourses(List<ScheduleModel> list)
@@ -29,23 +32,6 @@ namespace ChildCentre.AdminPanels
                 }
             }
         }
-
-        //public void UpdateInformation(AccountModel user)
-        //{
-        //    FullNameLabel.Text = user.FullName;
-        //    LoginLabel.Text = user.Login;
-        //    PhoneNumberLabel.Text = user.PhoneNumber;
-        //    EmailLabel.Text = user.Email;
-        //    DateOfBirthLabel.Text = user.DateOfBirth.Date.ToString();
-        //}
-        //private void ClearInformation()
-        //{
-        //    FullNameLabel.Text = "Нет данных";
-        //    LoginLabel.Text = "Нет данных";
-        //    PhoneNumberLabel.Text = "Нет данных";
-        //    EmailLabel.Text = "Нет данных";
-        //    DateOfBirthLabel.Text = "Нет данных";
-        //}
 
         private void TeacherComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {

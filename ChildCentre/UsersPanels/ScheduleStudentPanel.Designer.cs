@@ -29,6 +29,7 @@ namespace ChildCentre.UsersPanels
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.StudentScheduleDataGridView = new System.Windows.Forms.DataGridView();
             this.Занятие = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -45,7 +46,7 @@ namespace ChildCentre.UsersPanels
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(130, 13);
+            this.label1.Location = new System.Drawing.Point(175, 12);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(164, 20);
             this.label1.TabIndex = 1;
@@ -67,13 +68,21 @@ namespace ChildCentre.UsersPanels
             this.ЧТ,
             this.ПТ,
             this.СБ});
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.StudentScheduleDataGridView.DefaultCellStyle = dataGridViewCellStyle1;
             this.StudentScheduleDataGridView.Location = new System.Drawing.Point(2, 50);
             this.StudentScheduleDataGridView.Margin = new System.Windows.Forms.Padding(2);
             this.StudentScheduleDataGridView.Name = "StudentScheduleDataGridView";
             this.StudentScheduleDataGridView.RowHeadersVisible = false;
             this.StudentScheduleDataGridView.RowHeadersWidth = 10;
             this.StudentScheduleDataGridView.RowTemplate.Height = 28;
-            this.StudentScheduleDataGridView.Size = new System.Drawing.Size(417, 113);
+            this.StudentScheduleDataGridView.Size = new System.Drawing.Size(505, 262);
             this.StudentScheduleDataGridView.TabIndex = 9;
             // 
             // Занятие
@@ -83,7 +92,8 @@ namespace ChildCentre.UsersPanels
             this.Занятие.HeaderText = "Занятие";
             this.Занятие.MinimumWidth = 8;
             this.Занятие.Name = "Занятие";
-            this.Занятие.Width = 150;
+            this.Занятие.ReadOnly = true;
+            this.Занятие.Width = 90;
             // 
             // ПН
             // 
@@ -91,6 +101,7 @@ namespace ChildCentre.UsersPanels
             this.ПН.HeaderText = "ПН";
             this.ПН.MinimumWidth = 8;
             this.ПН.Name = "ПН";
+            this.ПН.ReadOnly = true;
             // 
             // ВТ
             // 
@@ -98,6 +109,7 @@ namespace ChildCentre.UsersPanels
             this.ВТ.HeaderText = "ВТ";
             this.ВТ.MinimumWidth = 8;
             this.ВТ.Name = "ВТ";
+            this.ВТ.ReadOnly = true;
             // 
             // СР
             // 
@@ -105,6 +117,7 @@ namespace ChildCentre.UsersPanels
             this.СР.HeaderText = "СР";
             this.СР.MinimumWidth = 8;
             this.СР.Name = "СР";
+            this.СР.ReadOnly = true;
             // 
             // ЧТ
             // 
@@ -138,7 +151,7 @@ namespace ChildCentre.UsersPanels
             this.Controls.Add(this.label1);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "ScheduleStudentPanel";
-            this.Size = new System.Drawing.Size(421, 320);
+            this.Size = new System.Drawing.Size(509, 320);
             ((System.ComponentModel.ISupportInitialize)(this.StudentScheduleDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

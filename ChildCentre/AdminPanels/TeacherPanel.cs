@@ -76,5 +76,18 @@ namespace ChildCentre.AdminPanels
                 TeacherComboBox.SelectedIndex = -1;
             }
         }
+
+        private void ScheduleTeacherButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                TeacherScheduleForm form = new TeacherScheduleForm(ListOfAllUser[TeacherComboBox.SelectedIndex].ID);
+                form.Show();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Выберите учителя!");
+            }
+        }    
     }
 }
