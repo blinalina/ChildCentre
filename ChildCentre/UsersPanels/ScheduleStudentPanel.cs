@@ -50,7 +50,6 @@ namespace ChildCentre.UsersPanels
                     {
                         StudentScheduleDataGridView[schedule[k].Day_of_the_week, pair.Value].Value = schedule[k].Class_room + "\n" + schedule[k].St_time.Substring(0, 5) + " -" + schedule[k].En_time.Substring(0, 5) + "\n" + schedule[k].Name_teacher;
                     }
-
                 }
             }
 

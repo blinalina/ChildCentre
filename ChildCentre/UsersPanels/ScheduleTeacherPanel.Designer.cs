@@ -46,9 +46,10 @@ namespace ChildCentre.UsersPanels
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(175, 12);
+            this.label1.Location = new System.Drawing.Point(262, 18);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(164, 20);
+            this.label1.Size = new System.Drawing.Size(256, 29);
             this.label1.TabIndex = 0;
             this.label1.Text = "Расписание занятий";
             // 
@@ -76,13 +77,12 @@ namespace ChildCentre.UsersPanels
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.TeacherScheduleDataGridView.DefaultCellStyle = dataGridViewCellStyle1;
-            this.TeacherScheduleDataGridView.Location = new System.Drawing.Point(2, 50);
-            this.TeacherScheduleDataGridView.Margin = new System.Windows.Forms.Padding(2);
+            this.TeacherScheduleDataGridView.Location = new System.Drawing.Point(3, 77);
             this.TeacherScheduleDataGridView.Name = "TeacherScheduleDataGridView";
             this.TeacherScheduleDataGridView.RowHeadersVisible = false;
             this.TeacherScheduleDataGridView.RowHeadersWidth = 10;
             this.TeacherScheduleDataGridView.RowTemplate.Height = 28;
-            this.TeacherScheduleDataGridView.Size = new System.Drawing.Size(505, 262);
+            this.TeacherScheduleDataGridView.Size = new System.Drawing.Size(758, 460);
             this.TeacherScheduleDataGridView.TabIndex = 9;
             // 
             // Занятие
@@ -151,12 +151,13 @@ namespace ChildCentre.UsersPanels
             // 
             // ScheduleTeacherPanel
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.TeacherScheduleDataGridView);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "ScheduleTeacherPanel";
-            this.Size = new System.Drawing.Size(509, 320);
+            this.Size = new System.Drawing.Size(764, 549);
             ((System.ComponentModel.ISupportInitialize)(this.TeacherScheduleDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

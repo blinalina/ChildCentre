@@ -89,6 +89,6 @@ namespace ChildCentre.AdminPanels
             {
                 MessageBox.Show("Выберите учителя!");
             }
-        }    
+        }
     }
 }

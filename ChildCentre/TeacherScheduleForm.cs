@@ -20,6 +20,7 @@ namespace ChildCentre
         {
             InitializeComponent();
             ScheduleTeacherPanel = new ScheduleTeacherPanel(idfr);
+            ScheduleTeacherPanel.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top | AnchorStyles.Bottom;
             ScheduleTeacherPanel.Visible = true;
             MainPanel.Controls.Add(ScheduleTeacherPanel);
         }
