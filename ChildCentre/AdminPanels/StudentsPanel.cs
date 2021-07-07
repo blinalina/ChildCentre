@@ -67,6 +67,7 @@ namespace ChildCentre.AdminPanels
             {
                 ListOfAllUser[StudentsComboBox.SelectedIndex] = editUserForm.Account;
                 UpdateInformation(ListOfAllUser[StudentsComboBox.SelectedIndex]);
+                StudentsComboBox.Items[StudentsComboBox.SelectedIndex] = ListOfAllUser[StudentsComboBox.SelectedIndex].FullName;
             }
         }
 

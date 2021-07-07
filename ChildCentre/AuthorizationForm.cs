@@ -35,7 +35,6 @@ namespace ChildCentre
             }
             catch (WrongPasswordException)
             {
-
                 MessageBox.Show("Неверный пароль!");
             }
             catch (UserNotFoundException)

@@ -74,7 +74,7 @@ namespace ChildCentre.Utility.DB
 
             string passwordFromDB = "";
             int idFromDB = -1;
-
+            int role = -1;
             // cmd.ExecuteReader для запроса с несколькими строками с толбцами
             //cmd.ExecuteNonQuery для insert, delete, update
             //cmd.ExecuteScalar одно значение
@@ -84,12 +84,7 @@ namespace ChildCentre.Utility.DB
                 {
                     idFromDB = res.GetInt32(0);
                     passwordFromDB = res.GetString(1);
-                    int role = res.GetInt32(2);
-
-
-                    Properties.Settings.Default.id = idFromDB;
-                    Properties.Settings.Default.role = role;
-                    Properties.Settings.Default.Save();
+                    role = res.GetInt32(2);
                 }
             }
             connection.Close();
@@ -102,6 +97,9 @@ namespace ChildCentre.Utility.DB
             {
                 throw new WrongPasswordException();
             }
+            Properties.Settings.Default.id = idFromDB;
+            Properties.Settings.Default.role = role;
+            Properties.Settings.Default.Save();
             return true;
         }
 
