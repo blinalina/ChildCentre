@@ -31,6 +31,7 @@ namespace ChildCentre
             ContentPanel.Controls.Add(TeacherPanel);
 
             SchedulePanel = new SchedulePanel();
+            SchedulePanel.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top | AnchorStyles.Bottom;
             SchedulePanel.Visible = false;
             ContentPanel.Controls.Add(SchedulePanel);
 

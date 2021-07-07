@@ -19,7 +19,9 @@ namespace ChildCentre
         public StudentScheduleForm(int idfr)
         {
             InitializeComponent();
+
             ScheduleStudentPanel = new ScheduleStudentPanel(idfr);
+            ScheduleStudentPanel.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top | AnchorStyles.Bottom;
             ScheduleStudentPanel.Visible = true;
             MainPanel.Controls.Add(ScheduleStudentPanel);
         }
