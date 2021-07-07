@@ -31,6 +31,9 @@ namespace ChildCentre.AdminPanels
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.ScheduleDataGridView = new System.Windows.Forms.DataGridView();
+            this.CoursesComboBox = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.Учитель = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ПН = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ВТ = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -38,9 +41,6 @@ namespace ChildCentre.AdminPanels
             this.ЧТ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ПТ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.СБ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CoursesComboBox = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.ScheduleDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -76,64 +76,6 @@ namespace ChildCentre.AdminPanels
             this.ScheduleDataGridView.Size = new System.Drawing.Size(626, 362);
             this.ScheduleDataGridView.TabIndex = 7;
             // 
-            // Учитель
-            // 
-            this.Учитель.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.Учитель.FillWeight = 357.9546F;
-            this.Учитель.HeaderText = "Учитель";
-            this.Учитель.MinimumWidth = 8;
-            this.Учитель.Name = "Учитель";
-            this.Учитель.ReadOnly = true;
-            this.Учитель.Width = 150;
-            // 
-            // ПН
-            // 
-            this.ПН.FillWeight = 57.00757F;
-            this.ПН.HeaderText = "ПН";
-            this.ПН.MinimumWidth = 8;
-            this.ПН.Name = "ПН";
-            this.ПН.ReadOnly = true;
-            // 
-            // ВТ
-            // 
-            this.ВТ.FillWeight = 57.00757F;
-            this.ВТ.HeaderText = "ВТ";
-            this.ВТ.MinimumWidth = 8;
-            this.ВТ.Name = "ВТ";
-            this.ВТ.ReadOnly = true;
-            // 
-            // СР
-            // 
-            this.СР.FillWeight = 57.00757F;
-            this.СР.HeaderText = "СР";
-            this.СР.MinimumWidth = 8;
-            this.СР.Name = "СР";
-            this.СР.ReadOnly = true;
-            // 
-            // ЧТ
-            // 
-            this.ЧТ.FillWeight = 57.00757F;
-            this.ЧТ.HeaderText = "ЧТ";
-            this.ЧТ.MinimumWidth = 8;
-            this.ЧТ.Name = "ЧТ";
-            this.ЧТ.ReadOnly = true;
-            // 
-            // ПТ
-            // 
-            this.ПТ.FillWeight = 57.00757F;
-            this.ПТ.HeaderText = "ПТ";
-            this.ПТ.MinimumWidth = 8;
-            this.ПТ.Name = "ПТ";
-            this.ПТ.ReadOnly = true;
-            // 
-            // СБ
-            // 
-            this.СБ.FillWeight = 57.00757F;
-            this.СБ.HeaderText = "СБ";
-            this.СБ.MinimumWidth = 8;
-            this.СБ.Name = "СБ";
-            this.СБ.ReadOnly = true;
-            // 
             // CoursesComboBox
             // 
             this.CoursesComboBox.FormattingEnabled = true;
@@ -162,6 +104,70 @@ namespace ChildCentre.AdminPanels
             this.label1.Size = new System.Drawing.Size(256, 29);
             this.label1.TabIndex = 4;
             this.label1.Text = "Расписание занятий";
+            // 
+            // Учитель
+            // 
+            this.Учитель.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Учитель.FillWeight = 357.9546F;
+            this.Учитель.HeaderText = "Учитель";
+            this.Учитель.MinimumWidth = 8;
+            this.Учитель.Name = "Учитель";
+            this.Учитель.ReadOnly = true;
+            this.Учитель.Width = 150;
+            // 
+            // ПН
+            // 
+            this.ПН.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ПН.FillWeight = 57.00757F;
+            this.ПН.HeaderText = "ПН";
+            this.ПН.MinimumWidth = 8;
+            this.ПН.Name = "ПН";
+            this.ПН.ReadOnly = true;
+            // 
+            // ВТ
+            // 
+            this.ВТ.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ВТ.FillWeight = 57.00757F;
+            this.ВТ.HeaderText = "ВТ";
+            this.ВТ.MinimumWidth = 8;
+            this.ВТ.Name = "ВТ";
+            this.ВТ.ReadOnly = true;
+            // 
+            // СР
+            // 
+            this.СР.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.СР.FillWeight = 57.00757F;
+            this.СР.HeaderText = "СР";
+            this.СР.MinimumWidth = 8;
+            this.СР.Name = "СР";
+            this.СР.ReadOnly = true;
+            // 
+            // ЧТ
+            // 
+            this.ЧТ.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ЧТ.FillWeight = 57.00757F;
+            this.ЧТ.HeaderText = "ЧТ";
+            this.ЧТ.MinimumWidth = 8;
+            this.ЧТ.Name = "ЧТ";
+            this.ЧТ.ReadOnly = true;
+            // 
+            // ПТ
+            // 
+            this.ПТ.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ПТ.FillWeight = 57.00757F;
+            this.ПТ.HeaderText = "ПТ";
+            this.ПТ.MinimumWidth = 8;
+            this.ПТ.Name = "ПТ";
+            this.ПТ.ReadOnly = true;
+            // 
+            // СБ
+            // 
+            this.СБ.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.СБ.FillWeight = 57.00757F;
+            this.СБ.HeaderText = "СБ";
+            this.СБ.MinimumWidth = 8;
+            this.СБ.Name = "СБ";
+            this.СБ.ReadOnly = true;
             // 
             // SchedulePanel
             // 

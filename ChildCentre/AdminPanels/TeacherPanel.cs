@@ -35,6 +35,7 @@ namespace ChildCentre.AdminPanels
             EmailLabel.Text = user.Email;
             DateOfBirthLabel.Text = user.DateOfBirth.ToString("dd.MM.yyyy");
         }
+
         private void ClearInformation()
         {
             FullNameLabel.Text = "Нет данных";
@@ -83,7 +84,7 @@ namespace ChildCentre.AdminPanels
             try
             {
                 TeacherScheduleForm form = new TeacherScheduleForm(ListOfAllUser[TeacherComboBox.SelectedIndex].ID);
-                form.Show();
+                form.ShowDialog();
             }
             catch (Exception)
             {

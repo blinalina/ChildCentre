@@ -83,7 +83,7 @@ namespace ChildCentre.AdminPanels
         private void SignUpStudentButton_Click(object sender, EventArgs e)
         {
             SignUpStudentForm frm = new SignUpStudentForm(this.StudentsComboBox);
-            frm.Show();
+            frm.ShowDialog();
         }
 
         private void ScheduleStudentButton_Click(object sender, EventArgs e)
@@ -91,7 +91,7 @@ namespace ChildCentre.AdminPanels
             try
             {
                 StudentScheduleForm form = new StudentScheduleForm(ListOfAllUser[StudentsComboBox.SelectedIndex].ID);
-                form.Show();
+                form.ShowDialog();
             }
             catch(Exception)
             {

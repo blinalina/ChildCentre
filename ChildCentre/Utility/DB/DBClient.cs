@@ -9,11 +9,6 @@ namespace ChildCentre.Utility.DB
 {
     public class DBClient
     {
-        /*static string connStr = "server=" + "db4free.net" +
-            ";user=" + "admindubna" +
-            ";database=" + "childcentre" +
-            ";port=" + "3306" +
-            ";password=" + "pnmyu2rVTRQF963" + ";SslMode=None;";*/
         static string connStr = "server=" + "remotemysql.com" +
             ";user=" + "UlFaq3Ih7N" +
             ";database=" + "UlFaq3Ih7N" +
@@ -75,7 +70,7 @@ namespace ChildCentre.Utility.DB
             string passwordFromDB = "";
             int idFromDB = -1;
             int role = -1;
-            // cmd.ExecuteReader для запроса с несколькими строками с толбцами
+            //cmd.ExecuteReader для запроса с несколькими строками с толбцами
             //cmd.ExecuteNonQuery для insert, delete, update
             //cmd.ExecuteScalar одно значение
             using (var res = cmd.ExecuteReader())
@@ -202,7 +197,6 @@ namespace ChildCentre.Utility.DB
                 throw new UserNotFoundException();
             }
             return true;
-
         }
       
         public static bool AddUserToDb(string login, string password, string role, string fullname, string birth, string number, string email)
@@ -240,7 +234,6 @@ namespace ChildCentre.Utility.DB
             }
 
              return true;
-
         }
         public static AccountModel GetAccount(int id)
         {
@@ -436,6 +429,7 @@ namespace ChildCentre.Utility.DB
 
             return true;
         }
+
         public static void UpdateAccountUnformation(AccountModel account, string password)
         {
             var connection = Connect();
@@ -451,6 +445,7 @@ namespace ChildCentre.Utility.DB
             cmd.ExecuteNonQuery();
             connection.Close();
         }
+
         public static List<ScheduleModel> GetTeacherSchedule(int teach_id)
         {
             List<ScheduleModel> schedule = new List<ScheduleModel>();
@@ -471,6 +466,7 @@ namespace ChildCentre.Utility.DB
             connection.Close();
             return schedule;
         }
+
         public static List<ScheduleModel> GetStudentSchedule(int stud_id)
         {
             List<ScheduleModel> schedule = new List<ScheduleModel>();
@@ -543,4 +539,4 @@ namespace ChildCentre.Utility.DB
             return schedule;
         }
     }
-  }
+}
