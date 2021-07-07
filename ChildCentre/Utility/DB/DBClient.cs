@@ -124,24 +124,23 @@ namespace ChildCentre.Utility.DB
             connection.Close();
             return list;
         }
-
-        public static List<ScheduleModel> GetCourses()
+        public static List<CourseModel> GetCourses()
         {
             var connection = Connect();
-            string sql = "SELECT ID, ID_COURS, (SELECT NAME FROM COURSES C WHERE C.ID = ID_COURS), ID_TEACHER, DAY_OF_THE_WEEK, START_TIME, END_TIME, CLASS FROM SCHEDULE";
+            string sql = "SELECT ID, NAME FROM COURSES";
             MySqlCommand cmd = new MySqlCommand(sql, connection);
 
-            List<ScheduleModel> schedule = new List<ScheduleModel>();
+            List<CourseModel> courses = new List<CourseModel>();
             using (var res = cmd.ExecuteReader())
             {
                 while (res.Read())
                 {
-                    ScheduleModel entry = new ScheduleModel(res.GetInt32(0), res.GetInt32(1), res.GetString(2), res.GetInt32(3), res.GetString(4), res.GetDateTime(5), res.GetDateTime(6), res.GetString(7));
-                    schedule.Add(entry);
+                    CourseModel course = new CourseModel(res.GetInt32(0), res.GetString(1));
+                    courses.Add(course);
                 }
             }
             connection.Close();
-            return schedule;
+            return courses;
         }
         public static bool ControlAddUserToDb(string login, string password, string role, string fullname, string birth, string number, string email)
         {
@@ -524,6 +523,26 @@ namespace ChildCentre.Utility.DB
             }
 
             return true;
+        }
+        public static List<ScheduleModel> GetAdminSchedule(int cours_id)
+        {
+            List<ScheduleModel> schedule = new List<ScheduleModel>();
+
+            var connection = Connect();
+            string sql = "SELECT ID, ID_COURS, (SELECT NAME FROM COURSES C WHERE C.ID = ID_COURS), (SELECT FULL_NAME FROM ACCOUNT A WHERE A.ID =ID_TEACHER), DAY_OF_THE_WEEK, START_TIME, END_TIME, CLASS FROM SCHEDULE WHERE ID_COURS=@cours_id";
+            MySqlCommand cmd = new MySqlCommand(sql, connection);
+            cmd.Parameters.AddWithValue("cours_id", cours_id);
+
+            using (var res = cmd.ExecuteReader())
+            {
+                while (res.Read())
+                {
+                    ScheduleModel line = new ScheduleModel(res.GetInt32(0), res.GetInt32(1), res.GetString(2), res.GetString(3), res.GetString(4), res.GetString(5), res.GetString(6), res.GetString(7));
+                    schedule.Add(line);
+                }
+            }
+            connection.Close();
+            return schedule;
         }
     }
   }

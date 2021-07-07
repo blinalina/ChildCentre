@@ -31,6 +31,9 @@ namespace ChildCentre.AdminPanels
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.ScheduleDataGridView = new System.Windows.Forms.DataGridView();
+            this.CoursesComboBox = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.Учитель = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ПН = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ВТ = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -38,9 +41,6 @@ namespace ChildCentre.AdminPanels
             this.ЧТ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ПТ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.СБ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CoursesComboBox = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.ScheduleDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -69,13 +69,45 @@ namespace ChildCentre.AdminPanels
             this.ПТ,
             this.СБ});
             this.ScheduleDataGridView.Location = new System.Drawing.Point(2, 78);
-            this.ScheduleDataGridView.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ScheduleDataGridView.Margin = new System.Windows.Forms.Padding(2);
             this.ScheduleDataGridView.Name = "ScheduleDataGridView";
             this.ScheduleDataGridView.RowHeadersVisible = false;
             this.ScheduleDataGridView.RowHeadersWidth = 62;
             this.ScheduleDataGridView.RowTemplate.Height = 28;
             this.ScheduleDataGridView.Size = new System.Drawing.Size(417, 235);
             this.ScheduleDataGridView.TabIndex = 7;
+            // 
+            // CoursesComboBox
+            // 
+            this.CoursesComboBox.FormattingEnabled = true;
+            this.CoursesComboBox.Location = new System.Drawing.Point(220, 45);
+            this.CoursesComboBox.Margin = new System.Windows.Forms.Padding(2);
+            this.CoursesComboBox.Name = "CoursesComboBox";
+            this.CoursesComboBox.Size = new System.Drawing.Size(141, 21);
+            this.CoursesComboBox.TabIndex = 6;
+            this.CoursesComboBox.SelectedIndexChanged += new System.EventHandler(this.CoursesComboBox_SelectedIndexChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.Location = new System.Drawing.Point(61, 44);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(136, 17);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Выберите занятие:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Location = new System.Drawing.Point(127, 7);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(164, 20);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Расписание занятий";
             // 
             // Учитель
             // 
@@ -84,6 +116,7 @@ namespace ChildCentre.AdminPanels
             this.Учитель.HeaderText = "Учитель";
             this.Учитель.MinimumWidth = 8;
             this.Учитель.Name = "Учитель";
+            this.Учитель.ReadOnly = true;
             this.Учитель.Width = 150;
             // 
             // ПН
@@ -92,6 +125,7 @@ namespace ChildCentre.AdminPanels
             this.ПН.HeaderText = "ПН";
             this.ПН.MinimumWidth = 8;
             this.ПН.Name = "ПН";
+            this.ПН.ReadOnly = true;
             // 
             // ВТ
             // 
@@ -99,6 +133,7 @@ namespace ChildCentre.AdminPanels
             this.ВТ.HeaderText = "ВТ";
             this.ВТ.MinimumWidth = 8;
             this.ВТ.Name = "ВТ";
+            this.ВТ.ReadOnly = true;
             // 
             // СР
             // 
@@ -106,6 +141,7 @@ namespace ChildCentre.AdminPanels
             this.СР.HeaderText = "СР";
             this.СР.MinimumWidth = 8;
             this.СР.Name = "СР";
+            this.СР.ReadOnly = true;
             // 
             // ЧТ
             // 
@@ -131,37 +167,6 @@ namespace ChildCentre.AdminPanels
             this.СБ.Name = "СБ";
             this.СБ.ReadOnly = true;
             // 
-            // CoursesComboBox
-            // 
-            this.CoursesComboBox.FormattingEnabled = true;
-            this.CoursesComboBox.Location = new System.Drawing.Point(220, 45);
-            this.CoursesComboBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.CoursesComboBox.Name = "CoursesComboBox";
-            this.CoursesComboBox.Size = new System.Drawing.Size(141, 21);
-            this.CoursesComboBox.TabIndex = 6;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(61, 44);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(136, 17);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Выберите занятие:";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(127, 7);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(164, 20);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Расписание занятий";
-            // 
             // SchedulePanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -170,9 +175,10 @@ namespace ChildCentre.AdminPanels
             this.Controls.Add(this.CoursesComboBox);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "SchedulePanel";
             this.Size = new System.Drawing.Size(421, 320);
+            this.VisibleChanged += new System.EventHandler(this.SchedulePanel_VisibleChanged);
             ((System.ComponentModel.ISupportInitialize)(this.ScheduleDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -182,6 +188,9 @@ namespace ChildCentre.AdminPanels
         #endregion
 
         private System.Windows.Forms.DataGridView ScheduleDataGridView;
+        private System.Windows.Forms.ComboBox CoursesComboBox;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Учитель;
         private System.Windows.Forms.DataGridViewTextBoxColumn ПН;
         private System.Windows.Forms.DataGridViewTextBoxColumn ВТ;
@@ -189,8 +198,5 @@ namespace ChildCentre.AdminPanels
         private System.Windows.Forms.DataGridViewTextBoxColumn ЧТ;
         private System.Windows.Forms.DataGridViewTextBoxColumn ПТ;
         private System.Windows.Forms.DataGridViewTextBoxColumn СБ;
-        private System.Windows.Forms.ComboBox CoursesComboBox;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
     }
 }

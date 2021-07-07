@@ -38,8 +38,6 @@ namespace ChildCentre.UsersPanels
                     lines.Add(schedule[i].Cours_name, n);
                     n++;
                 }
-                else
-                    continue;
             }
 
             foreach (var pair in lines)
@@ -59,8 +57,6 @@ namespace ChildCentre.UsersPanels
             TeacherScheduleDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             TeacherScheduleDataGridView.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             TeacherScheduleDataGridView.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-
-
         }
     }
 }
