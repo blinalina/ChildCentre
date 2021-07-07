@@ -82,7 +82,7 @@ namespace ChildCentre.UsersPanels
             this.TeacherScheduleDataGridView.RowHeadersVisible = false;
             this.TeacherScheduleDataGridView.RowHeadersWidth = 10;
             this.TeacherScheduleDataGridView.RowTemplate.Height = 28;
-            this.TeacherScheduleDataGridView.Size = new System.Drawing.Size(758, 460);
+            this.TeacherScheduleDataGridView.Size = new System.Drawing.Size(758, 416);
             this.TeacherScheduleDataGridView.TabIndex = 9;
             // 
             // Занятие

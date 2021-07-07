@@ -55,7 +55,6 @@ namespace ChildCentre
             try
             {
                 DateTime.ParseExact(date, "dd.MM.yyyy", CultureInfo.InvariantCulture);
-
             }
             catch (Exception e)
             {
@@ -63,7 +62,7 @@ namespace ChildCentre
                 DateOfBirthTextBox.Text = Account.DateOfBirth.ToString("dd.MM.yyyy");
                 return false;
             }
-            if(fullname.Length == 0 || login.Length == 0)
+            if (fullname.Length == 0 || login.Length == 0)
             {
                 MessageBox.Show("Логин и ФИО не могут быть пустыми");
                 LoginTextBox.Text = Account.Login;

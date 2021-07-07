@@ -27,10 +27,12 @@ namespace ChildCentre
             MainPanel.Controls.Add(InformationPanel);
 
             ScheduleStudentPanel = new ScheduleStudentPanel(Properties.Settings.Default.id);
+            ScheduleStudentPanel.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top | AnchorStyles.Bottom;
             ScheduleStudentPanel.Visible = false;
             MainPanel.Controls.Add(ScheduleStudentPanel);
 
             ScheduleTeacherPanel = new ScheduleTeacherPanel(Properties.Settings.Default.id);
+            ScheduleTeacherPanel.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top | AnchorStyles.Bottom;
             ScheduleTeacherPanel.Visible = false;
             MainPanel.Controls.Add(ScheduleTeacherPanel);
         }
@@ -78,7 +80,7 @@ namespace ChildCentre
         private void ChangePassBotton_Click(object sender, EventArgs e)
         {
             ChangingPasswordForm frm = new ChangingPasswordForm();
-            frm.Show();
+            frm.ShowDialog();
         }
     }
 }

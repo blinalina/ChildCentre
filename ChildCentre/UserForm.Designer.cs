@@ -42,10 +42,9 @@ namespace ChildCentre
             this.ExitBotton.FlatAppearance.BorderColor = System.Drawing.Color.DarkKhaki;
             this.ExitBotton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ExitBotton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ExitBotton.Location = new System.Drawing.Point(11, 320);
-            this.ExitBotton.Margin = new System.Windows.Forms.Padding(2);
+            this.ExitBotton.Location = new System.Drawing.Point(16, 492);
             this.ExitBotton.Name = "ExitBotton";
-            this.ExitBotton.Size = new System.Drawing.Size(100, 49);
+            this.ExitBotton.Size = new System.Drawing.Size(150, 75);
             this.ExitBotton.TabIndex = 0;
             this.ExitBotton.Text = "Выход";
             this.ExitBotton.UseVisualStyleBackColor = false;
@@ -57,10 +56,9 @@ namespace ChildCentre
             this.ChangePassBotton.FlatAppearance.BorderColor = System.Drawing.Color.DarkKhaki;
             this.ChangePassBotton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ChangePassBotton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ChangePassBotton.Location = new System.Drawing.Point(11, 176);
-            this.ChangePassBotton.Margin = new System.Windows.Forms.Padding(2);
+            this.ChangePassBotton.Location = new System.Drawing.Point(16, 271);
             this.ChangePassBotton.Name = "ChangePassBotton";
-            this.ChangePassBotton.Size = new System.Drawing.Size(100, 49);
+            this.ChangePassBotton.Size = new System.Drawing.Size(150, 75);
             this.ChangePassBotton.TabIndex = 1;
             this.ChangePassBotton.Text = "Смена\r\nпароля";
             this.ChangePassBotton.UseVisualStyleBackColor = false;
@@ -72,10 +70,9 @@ namespace ChildCentre
             this.ScheduleButton.FlatAppearance.BorderColor = System.Drawing.Color.DarkKhaki;
             this.ScheduleButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ScheduleButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ScheduleButton.Location = new System.Drawing.Point(11, 94);
-            this.ScheduleButton.Margin = new System.Windows.Forms.Padding(2);
+            this.ScheduleButton.Location = new System.Drawing.Point(16, 145);
             this.ScheduleButton.Name = "ScheduleButton";
-            this.ScheduleButton.Size = new System.Drawing.Size(100, 49);
+            this.ScheduleButton.Size = new System.Drawing.Size(150, 75);
             this.ScheduleButton.TabIndex = 2;
             this.ScheduleButton.Text = "Расписание";
             this.ScheduleButton.UseVisualStyleBackColor = false;
@@ -83,9 +80,13 @@ namespace ChildCentre
             // 
             // MainPanel
             // 
-            this.MainPanel.Location = new System.Drawing.Point(125, 12);
+            this.MainPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.MainPanel.Location = new System.Drawing.Point(188, 18);
+            this.MainPanel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MainPanel.Name = "MainPanel";
-            this.MainPanel.Size = new System.Drawing.Size(509, 357);
+            this.MainPanel.Size = new System.Drawing.Size(764, 549);
             this.MainPanel.TabIndex = 3;
             // 
             // InformationButton
@@ -94,10 +95,9 @@ namespace ChildCentre
             this.InformationButton.FlatAppearance.BorderColor = System.Drawing.Color.DarkKhaki;
             this.InformationButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.InformationButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.InformationButton.Location = new System.Drawing.Point(11, 12);
-            this.InformationButton.Margin = new System.Windows.Forms.Padding(2);
+            this.InformationButton.Location = new System.Drawing.Point(16, 18);
             this.InformationButton.Name = "InformationButton";
-            this.InformationButton.Size = new System.Drawing.Size(100, 49);
+            this.InformationButton.Size = new System.Drawing.Size(150, 75);
             this.InformationButton.TabIndex = 4;
             this.InformationButton.Text = "Моя\r\nстраница\r\n";
             this.InformationButton.UseVisualStyleBackColor = false;
@@ -105,16 +105,15 @@ namespace ChildCentre
             // 
             // UserForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.ClientSize = new System.Drawing.Size(646, 380);
+            this.ClientSize = new System.Drawing.Size(969, 585);
             this.Controls.Add(this.InformationButton);
             this.Controls.Add(this.MainPanel);
             this.Controls.Add(this.ScheduleButton);
             this.Controls.Add(this.ChangePassBotton);
             this.Controls.Add(this.ExitBotton);
-            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "UserForm";
             this.Text = "Личная страница";
             this.ResumeLayout(false);
