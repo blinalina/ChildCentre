@@ -19,28 +19,76 @@ namespace ChildCentre.AdminPanels
             InitializeComponent();
             ScheduleDataGridView.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
         }
-        List<ScheduleModel> ListOfAllSchedule = new List<ScheduleModel>();
-        public void UpdateListOfCourses(List<ScheduleModel> list)
+        List<CourseModel> CoursesList = new List<CourseModel>();
+        public void UpdateListOfCourses(List<CourseModel> list)
         {
-            ListOfAllSchedule = list;
+            CoursesList = list;
             CoursesComboBox.Items.Clear();
-            for (int i = 0; i < ListOfAllSchedule.Count; i++)
+            for (int i = 0; i < CoursesList.Count; i++)
             {
-                if (!CoursesComboBox.Items.Contains(ListOfAllSchedule[i].Cours_name))
-                {
-                    CoursesComboBox.Items.Add(ListOfAllSchedule[i].Cours_name);
-                }
+                    CoursesComboBox.Items.Add(CoursesList[i].Name);
             }
         }
-
-        private void TeacherComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void SchedulePanel_VisibleChanged(object sender, EventArgs e)
         {
+            if (!Visible)
+            { 
+                ScheduleDataGridView.Rows.Clear();
+                CoursesComboBox.SelectedIndex = -1;
+            }
+        }
+        public void GetSchedule(int cours_id)
+        {
+            List<ScheduleModel> schedule = new List<ScheduleModel>();
+            schedule = DBClient.GetAdminSchedule(cours_id);
+            Dictionary<string, int> lines = new Dictionary<string, int>();
+
+            if (schedule.Count == 0)
+                MessageBox.Show("По этому предмету еще нет занятий.");
+            else
+            {
+                int n = 0;
+                for (int i = 0; i < schedule.Count; i++)
+                {
+                    if (!lines.ContainsKey(schedule[i].Name_teacher))
+                    {
+                        lines.Add(schedule[i].Name_teacher, n);
+                        n++;
+                    }
+                }
+
+                foreach (var pair in lines)
+                {
+                    ScheduleDataGridView.Rows.Add(pair.Key);
+
+                    for (int k = 0; k < schedule.Count; k++)
+                    {
+                        if (pair.Key == schedule[k].Name_teacher)
+                        {
+                            ScheduleDataGridView[schedule[k].Day_of_the_week, pair.Value].Value = schedule[k].Class_room + "\n" + schedule[k].St_time.Substring(0, 5) + " -" + schedule[k].En_time.Substring(0, 5) + "\n";
+                        }
+
+                    }
+                }
+
+                ScheduleDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+                ScheduleDataGridView.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+                ScheduleDataGridView.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            }
+        }
+        public void ClearDataGridView()
+        {
+            ScheduleDataGridView.Rows.Clear();
+        }
+
+        private void CoursesComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ClearDataGridView();
             if (CoursesComboBox.SelectedIndex == -1)
             {
-                //ClearInformation();
                 return;
             }
-            //UpdateInformation(ListOfAllCourses[CoursesComboBox.SelectedIndex]);
+            GetSchedule(CoursesList[CoursesComboBox.SelectedIndex].ID);
         }
     }
 }

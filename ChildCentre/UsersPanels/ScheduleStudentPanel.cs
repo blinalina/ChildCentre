@@ -38,8 +38,6 @@ namespace ChildCentre.UsersPanels
                     lines.Add(schedule[i].Cours_name, n);
                     n++;
                 }
-                else
-                    continue;
             }
 
             foreach (var pair in lines)

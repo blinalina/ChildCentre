@@ -87,6 +87,7 @@
     <Compile Include="ChangingPasswordForm.Designer.cs">
       <DependentUpon>ChangingPasswordForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="CourseModel.cs" />
     <Compile Include="EditUserForm.cs">
       <SubType>Form</SubType>
     </Compile>
